@@ -1,6 +1,6 @@
 ```
 cd ~/
-git clone git@github.com:danethurber/dotfiles.git .dotfiles
+git clone git@github.com:danethurber/.dotfiles.git .dotfiles
 ln -s .dotfiles/.zshrc .zshrc
 
 vi .gitconfig
