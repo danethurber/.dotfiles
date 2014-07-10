@@ -1,0 +1,96 @@
+[alias]
+    # View the SHA, description, and history graph of the latest 20 commits
+    l = log --pretty='format:%C(yellow)%h %Creset- %C(white)%s %C(bold blue)[%an]%Creset %Cgreen%cr' -n 20 --graph
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    # View the current working tree status using the short format
+    s = status -s
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+    # List modified files in last commit
+    dl = "!git ll -1"
+    # Diff with patience
+    dip = diff --patience
+    # Pull in remote changes for the current repository and all its submodules
+    p = !"git pull; git submodule foreach git pull origin master"
+    # Clone a repository including all submodules
+    c = clone --recursive
+    # Commit all changes
+    ca = !git add -A && git commit -av
+    # Switch to and track remote branch
+    go = checkout --track
+    # Create named branches
+    feature = "!f() { git checkout -b feature/$1; }; f"
+    refactor = "!f() { git checkout -b refactor/$1; }; f"
+    bug = "!f() { git checkout -b bug/$1; }; f"
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+    # Credit an author on the latest commit
+    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+    # Undo a `git push`
+    undopush = push -f origin HEAD^:master
+    # Search through codebase
+    grep = grep -Ii
+    # Search from root folder
+    gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+    # Grep on filename
+    f = "!git ls-files | grep -i"
+    # reset to last commit on HEAD
+    stfu = reset --hard HEAD
+    # prune tracked branches on origin
+    prn = remote prune origin
+    # help with merging
+    ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+    # temporarily ignore files
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    # stash a snapshot
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+
+    # list aliases
+    aliases = "!git config -l | grep alias | cut -c 7-"
+    shortcuts = "!git aliases"
+
+[color]
+    # Use colors in Git commands that are capable of colored output when outputting to the terminal
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow black
+    frag = magenta black
+    old = red black
+    new = green black
+
+[color "status"]
+    plain = white
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+
+[core]
+    editor = vim
+    # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
+    whitespace = space-before-tab,indent-with-non-tab,trailing-space
+
+[log]
+    abbrevCommit = true
+    date = short
+
+[web]
+    browser = google-chrome
