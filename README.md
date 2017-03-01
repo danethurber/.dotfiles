@@ -46,8 +46,8 @@ export NVM_DIR=~/.nvm
 install current node and set as default
 
 ```
-nvm install v5.6.0
-nvm alias default 5.6.0
+nvm install v7.6.0
+nvm alias default 7.6.0
 ```
 
 install additional application with brew casks
