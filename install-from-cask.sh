@@ -9,3 +9,4 @@ brew cask install iterm2 2> /dev/null
 brew cask install google-chrome 2> /dev/null
 brew cask install visual-studio-code 2> /dev/null
 brew cask install 1password 2> /dev/null
+brew cask install slack 2> /dev/null
