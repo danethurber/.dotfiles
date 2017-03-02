@@ -12,4 +12,5 @@ brew cask install screenhero 2> /dev/null
 brew cask install slack 2> /dev/null
 brew cask install sketch 2> /dev/null
 brew cask install spotify 2> /dev/null
+brew cask install tomighty 2> /dev/null
 brew cask install visual-studio-code 2> /dev/null
