@@ -1,11 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 
 brew cask install 1password 2> /dev/null
 brew cask install atom 2> /dev/null
 brew cask install caffeine 2> /dev/null
+brew cask install day-o 2> /dev/null
 brew cask install google-chrome 2> /dev/null
 brew cask install iterm2 2> /dev/null
 brew cask install screenhero 2> /dev/null

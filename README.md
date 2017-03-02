@@ -53,5 +53,5 @@ nvm alias default 7.6.0
 install additional application with brew casks
 
 ```
-bash install-from-cask.sh
+source install-from-cask.sh
 ```
