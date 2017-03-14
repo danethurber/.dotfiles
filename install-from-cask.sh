@@ -3,16 +3,24 @@
 brew tap caskroom/cask
 brew tap caskroom/versions
 
-brew cask install 1password 2> /dev/null
-brew cask install atom 2> /dev/null
-brew cask install caffeine 2> /dev/null
-brew cask install day-o 2> /dev/null
-brew cask install google-chrome 2> /dev/null
-brew cask install iterm2 2> /dev/null
-brew cask install screenhero 2> /dev/null
-brew cask install slack 2> /dev/null
-brew cask install sketch 2> /dev/null
-brew cask install spotify 2> /dev/null
-brew cask install tomighty 2> /dev/null
-brew cask install tunnelblick 2> /dev/null
-brew cask install visual-studio-code 2> /dev/null
+packages=(
+  '1password'
+  'atom'
+  'caffeine'
+  'day-o'
+  'google-chrome'
+  'iterm2'
+  'java'
+  'screenhero'
+  'slack'
+  'sketch'
+  'spotify'
+  'tunnelblick'
+  'visual-studio-code'
+)
+
+for pkg in "${packages[@]}"
+do
+  echo "Installing" ${pkg}
+  brew cask install $pkg  2> /dev/null
+done
