@@ -16,6 +16,7 @@ packages=(
   'sketch'
   'spotify'
   'tunnelblick'
+  'virtualbox'
   'visual-studio-code'
 )
 
