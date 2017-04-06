@@ -9,6 +9,7 @@ packages=(
   'caffeine'
   'day-o'
   'google-chrome'
+  'gpgtools'
   'iterm2'
   'java'
   'screenhero'

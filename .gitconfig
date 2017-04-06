@@ -44,6 +44,8 @@
     f = "!git ls-files | grep -i"
     # reset to last commit on HEAD
     stfu = reset --hard HEAD
+    # delete local branches if remote branch was deleted
+    prune = fetch --prune
     # prune tracked branches on origin
     prn = remote prune origin
     # help with merging
@@ -55,13 +57,14 @@
     assumed = "!git ls-files -v | grep ^h | cut -c 3-"
     # stash a snapshot
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+    # stash includes untracked files
+    stash-all = stash save --include-untracked
 
     # list aliases
     aliases = "!git config -l | grep alias | cut -c 7-"
     shortcuts = "!git aliases"
 
 [color]
-    # Use colors in Git commands that are capable of colored output when outputting to the terminal
     ui = auto
 
 [color "branch"]
@@ -81,9 +84,20 @@
     changed = green
     untracked = cyan
 
+[commit]
+    # Verify commits using gpg key
+    gpgSign = true
+
 [merge]
-    # Include summaries of merged commits in newly created merge commit messages
     log = true
+
+[push]
+    default = simple
+    followTags = true
+
+[status]
+    # show untracked files inside newly created folders
+    showUntrackedFiles = all
 
 [core]
     editor = vim
