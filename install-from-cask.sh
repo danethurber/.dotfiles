@@ -15,6 +15,7 @@ packages=(
   'screenhero'
   'slack'
   'sketch'
+  'soundcleod'
   'spotify'
   'tunnelblick'
   'virtualbox'
