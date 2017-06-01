@@ -8,6 +8,7 @@ packages=(
   'atom'
   'caffeine'
   'day-o'
+  'firefox'
   'google-chrome'
   'gpgtools'
   'iterm2'
