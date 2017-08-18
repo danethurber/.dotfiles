@@ -55,3 +55,11 @@ install additional application with brew casks
 ```
 source install-from-cask.sh
 ```
+
+## Slack emojipack
+
+install [emojipack](https://github.com/lambtron/emojipacks)
+
+run the install
+
+`emojipacks -y https://github.com/danethurber/.dotfiles/emojipack/pack.yml`
