@@ -5,21 +5,14 @@ brew tap caskroom/versions
 
 packages=(
   '1password'
-  'atom'
-  'caffeine'
-  'day-o'
   'firefox'
   'google-chrome'
   'gpgtools'
   'iterm2'
-  'java'
-  'screenhero'
   'slack'
   'sketch'
-  'soundcleod'
   'spotify'
   'tunnelblick'
-  'virtualbox'
   'visual-studio-code'
 )
 

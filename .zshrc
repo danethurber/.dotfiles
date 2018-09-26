@@ -1,10 +1,16 @@
 export ZSH=$HOME/.oh-my-zsh
 
+# Only do lazy loading when NOT inside vscode
+if [ -z "$VSCODE_PID" ]; then
+  export NVM_LAZY_LOAD=true
+  export NVM_AUTO_USE=true
+fi
+
 ZSH_THEME="cloud"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(brew git github git-extras bower atom sublime ruby rails heroku)
+plugins=(zsh-nvm brew git github git-extras)
 
 source $ZSH/oh-my-zsh.sh
 
