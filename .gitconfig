@@ -64,6 +64,9 @@
     aliases = "!git config -l | grep alias | cut -c 7-"
     shortcuts = "!git aliases"
 
+    # commitizen
+    cz = "npx git-cz"
+
 [color]
     ui = auto
 
@@ -100,7 +103,7 @@
     showUntrackedFiles = all
 
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.dotfiles/.gitignore
     # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
     whitespace = space-before-tab,indent-with-non-tab,trailing-space

@@ -4,12 +4,8 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 packages=(
-  '1password'
-  'firefox'
-  'google-chrome'
-  'gpgtools'
+  'gpg-suite'
   'iterm2'
-  'slack'
   'sketch'
   'spotify'
   'tunnelblick'
