@@ -1,10 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
-# Only do lazy loading when NOT inside vscode
-if [ -z "$VSCODE_PID" ]; then
-  export NVM_LAZY_LOAD=true
-  export NVM_AUTO_USE=true
-fi
+export NVM_LAZY_LOAD=false
+export NVM_AUTO_USE=true
 
 ZSH_THEME="cloud"
 ENABLE_CORRECTION="true"
@@ -14,14 +11,16 @@ plugins=(zsh-nvm brew git github git-extras)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-
-alias sudo='sudo '
-alias fore="foreman start"
-alias be="bundle exec "
+export PATH=$PATH:./node_modules/.bin
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias whois="whois -h whois-servers.net"
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+stty -ixon
+
 [ -f ~/.secrets ] && source ~/.secrets
+export PATH="/usr/local/opt/ruby/bin:$PATH"

@@ -21,39 +21,41 @@ install brew
 install zsh
 
 ```
-brew install zsh zsh-completions
+brew install zsh
+git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-```
-
-install nvm
-
-```
-brew install nvm
-mkdir ~/.nvm
 ```
 
 ```
 vi ~/.secrets
 ```
 
-add nvm config to secrets file
-
-```
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
-```
-
 install current node and set as default
 
 ```
-nvm install v7.6.0
-nvm alias default 7.6.0
+nvm install 10.11.0
+nvm alias default 10.11.0
 ```
 
 install additional application with brew casks
 
 ```
 source install-from-cask.sh
+```
+
+## install vim-plug
+
+```
+brew install python
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+## setup vim configuration
+
+```
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ```
 
 ## Slack emojipack
