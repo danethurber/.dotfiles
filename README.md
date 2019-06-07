@@ -43,6 +43,21 @@ install additional application with brew casks
 source install-from-cask.sh
 ```
 
+## install vim-plug
+
+```
+brew install python
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+## setup vim configuration
+
+```
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+```
+
 ## Slack emojipack
 
 install [emojipack](https://github.com/lambtron/emojipacks)
