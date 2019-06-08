@@ -58,6 +58,18 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ```
 
+## install with plug
+
+```
+:PlugInstall
+```
+
+## install COC extenions
+
+```
+:CocInstall coc-tsserver coc-json
+```
+
 ## Slack emojipack
 
 install [emojipack](https://github.com/lambtron/emojipacks)
