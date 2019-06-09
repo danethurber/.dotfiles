@@ -41,11 +41,11 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Test shortcuts
-" nnoremap <silent> <Leader>t :TestFile<CR>
-" nnoremap <silent> <Leader>s :TestNearest<CR>
-" nnoremap <silent> <Leader>l :TestLast<CR>
-" nnoremap <silent> <Leader>a :TestSuite<CR>
-" nnoremap <silent> <Leader>gt :TestVisit<CR>
+let g:test#no_alternate = 2 " projectionist
+let test#strategy = "vimterminal"
+
+nnoremap <silent> <leader>2 :TestFile<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<Space>
+
