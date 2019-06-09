@@ -47,6 +47,7 @@ set wildmenu
 
 let g:CommandTWildIgnore=&wildignore . ",*/node_modules"
 
+nnoremap <silent> <Leader>t :Files<CR>
 nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 
 " Explorer
@@ -57,8 +58,14 @@ let g:netrw_winsize = 25
 
 map <silent> <Leader>d :Vexplore<CR>
 
+" terminal
+nnoremap <leader>1 :Nuake<CR>
+inoremap <leader>1 <C-\><C-n>:Nuake<CR>
+tnoremap <leader>1 <C-\><C-n>:Nuake<CR>
+
 " airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_section_z ="%3l/%L:%2v"
 let g:airline_theme='one'
+

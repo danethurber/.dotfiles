@@ -11,9 +11,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
 
-	Plug 'wincent/command-t', {
-		\  'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
+  Plug 'Lenovsky/nuake'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
@@ -47,3 +48,4 @@ source ~/.dotfiles/vim/coc.vim
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+

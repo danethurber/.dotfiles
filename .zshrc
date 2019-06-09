@@ -24,3 +24,5 @@ stty -ixon
 
 [ -f ~/.secrets ] && source ~/.secrets
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
