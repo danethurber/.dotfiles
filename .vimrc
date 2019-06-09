@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'terryma/vim-multiple-cursors'
 
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
