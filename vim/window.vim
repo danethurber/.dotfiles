@@ -46,17 +46,22 @@ set hlsearch			" highlight matches
 set wildmenu
 
 let g:CommandTWildIgnore=&wildignore . ",*/node_modules"
+let g:fzf_layout = { 'up': '~50%' }
 
 nnoremap <silent> <Leader>t :Files<CR>
 nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 
 " Explorer
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-map <silent> <Leader>d :Vexplore<CR>
+"let g:loaded_netrw=1
+let g:loaded_netrwPlugin=1
+let g:NERDTreeLimitedSyntax = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrows = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+nnoremap <silent> <Leader>d :NERDTreeToggle<CR> " open
+nnoremap <silent> <Leader>v :NERDTreeFind<CR> " open and find current file
 
 " terminal
 nnoremap <leader>1 :Nuake<CR>

@@ -11,11 +11,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
 
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'Lenovsky/nuake'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-projectionist'
 
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'

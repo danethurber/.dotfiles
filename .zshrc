@@ -14,6 +14,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:./node_modules/.bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias whois="whois -h whois-servers.net"
