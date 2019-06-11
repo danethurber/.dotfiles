@@ -1,6 +1,3 @@
-" TODO:
-"   - testing/projectionist
-
 call plug#begin('~/.vim/plugged')
 	Plug 'editorconfig/editorconfig-vim'
 
@@ -28,10 +25,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'sheerun/vim-polyglot'
 	Plug 'moll/vim-node'
 	Plug 'jparise/vim-graphql'
+	" Plug 'ianks/vim-tsx'
 	Plug 'Quramy/vim-js-pretty-template'
 	Plug 'w0rp/ale'
-
-	" Plug 'ianks/vim-tsx'
 
 	Plug 'janko/vim-test'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }

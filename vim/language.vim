@@ -17,7 +17,7 @@ let g:ale_set_baloons = 1
 :call extend(g:ale_fixers, {
 	\	'javascript': ['eslint'],
 	\	'typescript': ['tslint'],
-	\	'html': ['prettier'] })
+	\	'html': [] })
 
 let g:ale_typescript_tslint_use_global = 0
 let g:ale_typescript_tslint_config_path = ''
