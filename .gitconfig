@@ -99,7 +99,14 @@
 
 [merge]
     log = true
-    tool = vimdiff
+    tool = diffconflicts
+
+[mergetool]
+	keepBackup = false
+
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
 
 [push]
     default = simple

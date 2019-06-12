@@ -5,7 +5,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-  Plug 'tpope/vim-vinegar'
+
+  Plug 'whiteinge/diffconflicts'
   Plug 'tpope/vim-fugitive'
 
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -41,7 +42,9 @@ set nowritebackup
 set directory=$HOME/.vim/swapfiles
 
 " Default to not read-only in vimdiff
-set noro
+if &diff
+  set noro
+endif
 
 source ~/.dotfiles/vim/keyboard.vim
 source ~/.dotfiles/vim/window.vim
