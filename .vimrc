@@ -40,6 +40,9 @@ set nobackup
 set nowritebackup
 set directory=$HOME/.vim/swapfiles
 
+" Default to not read-only in vimdiff
+set noro
+
 source ~/.dotfiles/vim/keyboard.vim
 source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/language.vim

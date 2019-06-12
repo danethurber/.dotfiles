@@ -91,8 +91,15 @@
     # Verify commits using gpg key
     gpgSign = true
 
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
 [merge]
     log = true
+    tool = vimdiff
 
 [push]
     default = simple
@@ -114,3 +121,8 @@
 
 [web]
     browser = google-chrome
+
+[merge "npm-merge-driver"]
+    name = automatically merge npm lockfiles
+    driver = npx npm-merge-driver merge %A %O %B %P
+
