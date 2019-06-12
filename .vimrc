@@ -16,7 +16,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-projectionist'
 
 	Plug 'tpope/vim-commentary'
@@ -34,6 +33,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
+
+" NOTE: use `:PlugSnapshot plug.lock` to generator lock file
 
 set encoding=utf-8
 

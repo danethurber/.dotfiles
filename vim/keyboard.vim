@@ -49,3 +49,7 @@ nnoremap <silent> <leader>2 :TestFile<CR>
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<Space>
 
+" I removed multiple-cursors. use native vim instead
+" https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+nnoremap <C-n> :echoe "use cgn instead of multiple cursors"<CR>
+
