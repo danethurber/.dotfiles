@@ -76,14 +76,6 @@ ln -s ~/.dotfiles/.vimrc ~/.vimrc
 :CocInstall coc-tsserver coc-json
 ```
 
-## install hammerspoon and config
-
-(hammerspoon)[http://www.hammerspoon.org/]
-
-```
-ln -s ~/.dotfiles/.hammerspoon/init.lua ~/.hammerspoon/init.lua
-```
-
 ## Slack emojipack
 
 install [emojipack](https://github.com/lambtron/emojipacks)
