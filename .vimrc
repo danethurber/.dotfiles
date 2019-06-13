@@ -1,13 +1,19 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'editorconfig/editorconfig-vim'
 
+  Plug 'tpope/vim-repeat'
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-surround'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'wincent/terminus'
+
+  Plug 'tpope/vim-fugitive'
+  Plug 'whiteinge/diffconflicts'
+
 	Plug 'rakr/vim-one'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-
-  Plug 'whiteinge/diffconflicts'
-  Plug 'tpope/vim-fugitive'
 
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -18,11 +24,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-projectionist'
 
-  Plug 'tpope/vim-repeat'
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-surround'
-  Plug 'jiangmiao/auto-pairs'
-
 	Plug 'sheerun/vim-polyglot'
 	Plug 'moll/vim-node'
 	Plug 'jparise/vim-graphql'
@@ -32,7 +33,6 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'janko/vim-test'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
 call plug#end()
 
 " NOTE: use `:PlugSnapshot plug.lock` to generator lock file
