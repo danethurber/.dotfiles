@@ -18,7 +18,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'Lenovsky/nuake'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -27,7 +26,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'sheerun/vim-polyglot'
 	Plug 'moll/vim-node'
 	Plug 'jparise/vim-graphql'
-	" Plug 'ianks/vim-tsx'
+	Plug 'ianks/vim-tsx'
 	Plug 'Quramy/vim-js-pretty-template'
 	Plug 'w0rp/ale'
 
