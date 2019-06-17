@@ -63,11 +63,6 @@ let NERDTreeQuitOnOpen=1
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR> " open
 nnoremap <silent> <Leader>v :NERDTreeFind<CR> " open and find current file
 
-" terminal
-nnoremap <leader>1 :Nuake<CR>
-inoremap <leader>` <C-\><C-n>:Nuake<CR>
-tnoremap <leader>` <C-\><C-n>:Nuake<CR>
-
 " airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1

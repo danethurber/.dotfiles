@@ -6,10 +6,8 @@ brew tap caskroom/versions
 packages=(
   'gpg-suite'
   'iterm2'
-  'sketch'
   'spotify'
   'tunnelblick'
-  'visual-studio-code'
 )
 
 for pkg in "${packages[@]}"
