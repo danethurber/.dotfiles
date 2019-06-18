@@ -5,7 +5,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
+
   Plug 'wincent/terminus'
+  Plug 'christoomey/vim-tmux-navigator'
 
   Plug 'tpope/vim-fugitive'
   Plug 'whiteinge/diffconflicts'

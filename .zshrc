@@ -1,5 +1,8 @@
 export ZSH=$HOME/.oh-my-zsh
 
+export EDITOR=vim
+export TERM=xterm-256color
+
 export NVM_LAZY_LOAD=false
 export NVM_AUTO_USE=true
 
@@ -19,6 +22,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias whois="whois -h whois-servers.net"
+alias :q="exit"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
