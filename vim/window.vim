@@ -2,8 +2,11 @@ set mouse=a
 
 " Theme/Layout
 syntax enable
+
 colorscheme one
+
 set background=dark
+set cmdheight=1
 set cursorline
 set guifont=Hack\ Nerd\ Font:h11
 set laststatus=2  " Always display the status line
@@ -51,6 +54,9 @@ let g:fzf_layout = { 'up': '~50%' }
 nnoremap <silent> <Leader>t :Files<CR>
 nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 
+" yank highlight duration
+let g:highlightedyank_highlight_duration = 300
+
 " Explorer
 "let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
@@ -66,7 +72,22 @@ nnoremap <silent> <Leader>v :NERDTreeFind<CR> " open and find current file
 " airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 1
+
 let g:airline_powerline_fonts = 1
-let g:airline_section_z ="%3l/%L:%2v"
 let g:airline_theme='one'
+let g:airline_skip_empty_sections = 1
+
+autocmd User AirlineAfterInit call AirlineInit()
+function! AirlineInit()
+  let g:airline_section_b = airline#section#create(['branch'])
+  let g:airline_section_z = airline#section#create(['hunks', ' | ', 'linenr'])
+endfunction
+
+function! BetterLineNumber()
+  return substitute(line('.'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g'). '/'.
+    \    substitute(line('$'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g')
+endfunction
+
+call airline#parts#define('linenr', { 'function': 'BetterLineNumber', 'accents': 'bold' })
 

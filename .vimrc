@@ -1,39 +1,41 @@
 call plug#begin('~/.vim/plugged')
-	Plug 'editorconfig/editorconfig-vim'
+  Plug 'editorconfig/editorconfig-vim'
 
   Plug 'tpope/vim-repeat'
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
 
   Plug 'wincent/terminus'
   Plug 'christoomey/vim-tmux-navigator'
 
   Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   Plug 'whiteinge/diffconflicts'
 
-	Plug 'rakr/vim-one'
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+  Plug 'rakr/vim-one'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-projectionist'
 
-	Plug 'sheerun/vim-polyglot'
-	Plug 'moll/vim-node'
-	Plug 'jparise/vim-graphql'
-	Plug 'ianks/vim-tsx'
-	Plug 'Quramy/vim-js-pretty-template'
-	Plug 'w0rp/ale'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'moll/vim-node'
+  Plug 'jparise/vim-graphql'
+  Plug 'ianks/vim-tsx'
+  Plug 'Quramy/vim-js-pretty-template'
+  Plug 'w0rp/ale'
 
-	Plug 'janko/vim-test'
-	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'janko/vim-test'
+  Plug 'machakann/vim-highlightedyank'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " NOTE: use `:PlugSnapshot plug.lock` to generator lock file
