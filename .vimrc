@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-projectionist'
+  Plug 'https://github.com/alok/notational-fzf-vim'
 
   Plug 'sheerun/vim-polyglot'
   Plug 'moll/vim-node'
@@ -54,6 +55,7 @@ endif
 source ~/.dotfiles/vim/keyboard.vim
 source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/language.vim
+source ~/.dotfiles/vim/markdown.vim
 source ~/.dotfiles/vim/coc.vim
 
 " Local config

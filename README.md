@@ -43,6 +43,13 @@ install additional application with brew casks
 source install-from-cask.sh
 ```
 
+## create a Notes folder for Notational Velocity
+
+```
+mkdir ~/Notes
+
+```
+
 ## install/config tmux
 
 ```
@@ -68,10 +75,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ```
 
-## install fd
+## install search utils
 
 ```
-
+brew install ripgrep
 brew install fd
 
 ```
