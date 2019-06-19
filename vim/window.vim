@@ -78,16 +78,12 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='one'
 let g:airline_skip_empty_sections = 1
 
+call airline#parts#define('linenr', { 'accents': 'bold' })
+
 autocmd User AirlineAfterInit call AirlineInit()
 function! AirlineInit()
   let g:airline_section_b = airline#section#create(['branch'])
-  let g:airline_section_z = airline#section#create(['hunks', ' | ', 'linenr'])
+  let g:airline_section_z = airline#section#create(['hunks', 'linenr'])
 endfunction
 
-function! BetterLineNumber()
-  return substitute(line('.'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g'). '/'.
-    \    substitute(line('$'), '\d\@<=\(\(\d\{3\}\)\+\)$', ',&', 'g')
-endfunction
-
-call airline#parts#define('linenr', { 'function': 'BetterLineNumber', 'accents': 'bold' })
 

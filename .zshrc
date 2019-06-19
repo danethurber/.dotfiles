@@ -1,10 +1,10 @@
 export ZSH=$HOME/.oh-my-zsh
 
 export EDITOR=vim
+export TERM=xterm-256color
 
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
-export ZSH_TMUX_FIXTERM=true
 
 export NVM_LAZY_LOAD=false
 export NVM_AUTO_USE=true

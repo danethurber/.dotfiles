@@ -3,8 +3,8 @@ let g:jsx_ext_required=0
 " linting
 let g:ale_linters = {}
 let g:ale_fixers = {}
-let g:ale_fix_on_save = 1
-let g:ale_set_baloons = 1
+let g:ale_fix_on_save = 0
+let g:ale_set_baloons = 0
 
 :call extend(g:ale_fixers, {
 	\	'*': ['trim_whitespace'],
@@ -21,8 +21,6 @@ let g:ale_set_baloons = 1
 
 let g:ale_typescript_tslint_use_global = 0
 let g:ale_typescript_tslint_config_path = ''
-
-let g:airline#extensions#ale#enabled = 1
 
 let g:ale_lint_on_enter = 0
 let g:ale_linters_explicit = 1
