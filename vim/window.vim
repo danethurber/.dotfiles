@@ -36,6 +36,9 @@ set splitright
 set autoread
 au CursorHold * checktime
 
+" welcome message
+autocmd VimEnter * echo " >^.^< Hello!"
+
 " Folding
 " set foldenable
 " set foldlevelstart=10

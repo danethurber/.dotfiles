@@ -13,10 +13,10 @@ let g:vim_markdown_conceal_code_blocks = 0
 " yaml frontmatter
 let g:vim_markdown_frontmatter = 1
 
-" search paths
+" NV search paths
 let g:nv_search_paths = ['~/Notes']
 
-" short file paths
+" NV short file paths
 let g:nv_use_short_pathnames = 1
 
 " open N-FZF
@@ -30,6 +30,7 @@ let g:nv_create_note_window = 'e'
 function ToggleCheckbox()
   let l:line=getline('.')
   let l:curs=winsaveview()
+  
   if l:line=~?'\s*-\s*\[\s*\].*'
       s/\[\s*\]/[.]/
   elseif l:line=~?'\s*-\s*\[\.\].*'
