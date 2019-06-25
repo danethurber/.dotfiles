@@ -4,6 +4,7 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 packages=(
+  'alacritty'
   'gpg-suite'
   'iterm2'
   'spotify'

@@ -36,10 +36,7 @@ set splitright
 set autoread
 au CursorHold * checktime
 
-" welcome message
-autocmd VimEnter * echo " >^.^< Hello!"
-
-" Folding
+" folding
 " set foldenable
 " set foldlevelstart=10
 " set foldmethod=indent
@@ -55,20 +52,29 @@ let g:CommandTWildIgnore=&wildignore . ",*/node_modules"
 let g:fzf_layout = { 'up': '~50%' }
 
 nnoremap <silent> <Leader>t :Files<CR>
+nnoremap <silent> <Leader>T :Rg<CR>
 nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 
 " yank highlight duration
 let g:highlightedyank_highlight_duration = 300
 
 " Explorer
-"let g:loaded_netrw=1
+let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
+
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeLimitedSyntax = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeDirArrows = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR> " open
 nnoremap <silent> <Leader>v :NERDTreeFind<CR> " open and find current file
 
@@ -88,5 +94,4 @@ function! AirlineInit()
   let g:airline_section_b = airline#section#create(['branch'])
   let g:airline_section_z = airline#section#create(['hunks', 'linenr'])
 endfunction
-
 

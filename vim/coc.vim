@@ -5,16 +5,10 @@ set completeopt+=noinsert,menuone,noinsert,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
-" set omnifunc=syntaxcomplete#Complete
-" autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " if hidden is not set, TextEdit might fail.
 set hidden
 
-" Some servers have issues with backup files, see #649
+" Some servers have issues with backup files
 set nobackup
 set nowritebackup
 
@@ -22,7 +16,7 @@ set nowritebackup
 " set cmdheight=2
 
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=1000
+" set updatetime=1000
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
