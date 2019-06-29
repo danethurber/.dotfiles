@@ -4,7 +4,7 @@ let g:jsx_ext_required=0
 let g:ale_linters = {}
 let g:ale_fixers = {}
 let g:ale_fix_on_save = 0
-let g:ale_set_baloons = 0
+let g:ale_set_balloons = 1
 
 :call extend(g:ale_fixers, {
 	\	'*': ['trim_whitespace'],
@@ -42,6 +42,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.graphql,*.md Pret
 autocmd BufWritePre .babelrc,.eslintrc,.prettierrc PrettierAsync
 
 " Movement between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 

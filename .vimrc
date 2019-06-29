@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
 
-  Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
@@ -33,6 +32,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ianks/vim-tsx'
   Plug 'Quramy/vim-js-pretty-template'
   Plug 'w0rp/ale'
+  Plug 'tjdevries/overlength.vim'
 
   Plug 'janko/vim-test'
   Plug 'machakann/vim-highlightedyank'
@@ -46,6 +46,12 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 set directory=$HOME/.vim/swapfiles
+
+if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes
+  " work properly when Vim is used inside tmux and GNU screen.
+  set t_ut=
+endif
 
 " Default to not read-only in vimdiff
 if &diff
@@ -63,4 +69,8 @@ source ~/.dotfiles/vim/splash.vim
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" commands to edit/source vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 

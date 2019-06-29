@@ -8,6 +8,10 @@ export ZSH_TMUX_AUTOQUIT=false
 
 export NVM_LAZY_LOAD=false
 export NVM_AUTO_USE=true
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
 
 ZSH_THEME="cloud"
 ENABLE_CORRECTION="true"
@@ -18,7 +22,6 @@ plugins=(zsh-nvm brew git github git-extras tmux)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:./node_modules/.bin
-export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
@@ -31,7 +34,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 stty -ixon
 
-[ -f ~/.secrets ] && source ~/.secrets
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.secrets ] && source ~/.secrets
+
