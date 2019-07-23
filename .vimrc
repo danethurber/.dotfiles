@@ -12,6 +12,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'whiteinge/diffconflicts'
 
+  Plug 'mhinz/vim-startify'
+
   Plug 'rakr/vim-one'
   Plug 'ryanoasis/vim-devicons'
   Plug 'vim-airline/vim-airline'
@@ -63,7 +65,6 @@ source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/language.vim
 source ~/.dotfiles/vim/markdown.vim
 source ~/.dotfiles/vim/coc.vim
-source ~/.dotfiles/vim/splash.vim
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
