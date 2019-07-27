@@ -1,0 +1,29 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "Markdown",
+    "css",
+    "graphql",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.autoFixOnSave": false,
+  "javascript.preferences.noSemicolons": true,
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.validate.enable": true,
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 2,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.bracketSpacing": true,
+  "tslint.autoFixOnSave": false,
+  "tslint.jsEnable": false,
+  "tsserver.enableJavascript": true,
+  "typescript.preferences.noSemicolons": true,
+  "typescript.preferences.quoteStyle": "single"
+}

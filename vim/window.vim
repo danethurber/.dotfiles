@@ -19,6 +19,7 @@ set showmatch
 set termguicolors
 
 " Make it obvious where 80 characters is
+highlight ColorColumn term=reverse ctermbg=1 guibg=DarkGray
 set textwidth=80
 set colorcolumn=+1
 
@@ -59,6 +60,21 @@ nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 " yank highlight duration
 let g:highlightedyank_highlight_duration = 300
 
+" Splash screen
+let g:startify_custom_header = ['']
+let g:startify_custom_footer = ['']
+
+let g:startify_bookmarks = [
+  \ '~/.vimrc',
+  \ '~/.zshrc',
+  \ '~/.tmux.conf',
+\]
+let g:startify_lists = [
+  \ { 'header': ['   MRU '. getcwd()],  'type': 'dir' },
+  \ { 'header': ['   MRU'],             'type': 'files' },
+  \ { 'header': ['   Bookmarks'],       'type': 'bookmarks' },
+\ ]
+
 " Explorer
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
@@ -71,16 +87,21 @@ let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
+
+nnoremap <silent> <Leader>x :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_startify = 1
+
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
-nnoremap <silent> <Leader>d :NERDTreeToggle<CR> " open
-nnoremap <silent> <Leader>v :NERDTreeFind<CR> " open and find current file
-
 " airline
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 
@@ -92,7 +113,6 @@ call airline#parts#define('linenr', { 'accents': 'bold' })
 
 autocmd User AirlineAfterInit call AirlineInit()
 function! AirlineInit()
-  let g:airline_section_b = airline#section#create(['branch'])
   let g:airline_section_z = airline#section#create(['hunks', 'linenr'])
 endfunction
 

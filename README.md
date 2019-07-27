@@ -88,6 +88,7 @@ brew install fd
 ```
 
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 ```
 
@@ -99,22 +100,10 @@ ln -s ~/.dotfiles/.vimrc ~/.vimrc
 
 ```
 
-## install COC extenions
+## install additional coc extensions
 
 ```
 
-:CocInstall coc-tsserver coc-json
-
-```
-
-## Slack emojipack
-
-install [emojipack](https://github.com/lambtron/emojipacks)
-
-run the install
-
-`emojipacks -y https://github.com/danethurber/.dotfiles/emojipack/pack.yml`
-
-```
+:CocInstall coc-emoji coc-jest
 
 ```
