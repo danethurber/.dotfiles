@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
 
-  Plug 'mhinz/vim-startify'
-
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
 
@@ -17,7 +15,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'scrooloose/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ryanoasis/vim-devicons'
@@ -26,7 +24,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'moll/vim-node'
   Plug 'jparise/vim-graphql'
   Plug 'ianks/vim-tsx'
-  " Plug 'tjdevries/overlength.vim'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'

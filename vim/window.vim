@@ -60,21 +60,6 @@ nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
 " yank highlight duration
 let g:highlightedyank_highlight_duration = 300
 
-" Splash screen
-let g:startify_custom_header = ['']
-let g:startify_custom_footer = ['']
-
-let g:startify_bookmarks = [
-  \ '~/.vimrc',
-  \ '~/.zshrc',
-  \ '~/.tmux.conf',
-\]
-let g:startify_lists = [
-  \ { 'header': ['   MRU '. getcwd()],  'type': 'dir' },
-  \ { 'header': ['   MRU'],             'type': 'files' },
-  \ { 'header': ['   Bookmarks'],       'type': 'bookmarks' },
-\ ]
-
 " Explorer
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
@@ -87,6 +72,11 @@ let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
+
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 nnoremap <silent> <Leader>x :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>

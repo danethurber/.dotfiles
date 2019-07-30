@@ -42,7 +42,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " Test shortcuts
 let g:test#no_alternate = 2 " projectionist
-" let test#strategy = "vimterminal"
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<Space>
