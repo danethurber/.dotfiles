@@ -104,6 +104,6 @@ ln -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 ```
 
-:CocInstall coc-emoji coc-jest
+:CocInstall coc-emoji coc-jest coc-json coc-tsserver
 
 ```

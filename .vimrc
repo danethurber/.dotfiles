@@ -35,11 +35,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-tslint-plugin', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
@@ -63,10 +61,11 @@ if &diff
   set noro
 endif
 
-source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/keyboard.vim
+source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/language.vim
 source ~/.dotfiles/vim/markdown.vim
+source ~/.dotfiles/vim/search.vim
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

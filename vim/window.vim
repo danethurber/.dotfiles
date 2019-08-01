@@ -19,7 +19,7 @@ set showmatch
 set termguicolors
 
 " Make it obvious where 80 characters is
-highlight ColorColumn term=reverse ctermbg=1 guibg=DarkGray
+highlight ColorColumn term=reverse ctermbg=1 guibg=#424242
 set textwidth=80
 set colorcolumn=+1
 
@@ -45,21 +45,6 @@ au CursorHold * checktime
 " set foldnestmax=10
 " nnoremap <leader>z za " open/close folds
 
-" Search
-set incsearch			" search as characters are entered
-set hlsearch			" highlight matches
-set wildmenu
-
-let g:CommandTWildIgnore=&wildignore . ",*/node_modules"
-let g:fzf_layout = { 'up': '~50%' }
-
-nnoremap <silent> <Leader>t :Files<CR>
-nnoremap <silent> <Leader>T :Rg<CR>
-nnoremap <leader>/ :nohlsearch<CR>    " turn off search highlight
-
-" yank highlight duration
-let g:highlightedyank_highlight_duration = 300
-
 " Explorer
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
@@ -72,7 +57,6 @@ let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
-
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif

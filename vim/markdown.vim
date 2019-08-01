@@ -20,7 +20,7 @@ let g:nv_search_paths = ['~/Notes']
 let g:nv_use_short_pathnames = 1
 
 " open N-FZF
-" nnoremap <silent> <localleader>n :NV<CR>
+nnoremap <silent> <localleader>N :NV<CR>
 " create new note binding
 let g:nv_create_note_key = 'ctrl-N'
 " open new notes in main window
