@@ -3,13 +3,21 @@
     "Markdown",
     "css",
     "graphql",
+    "jasmine.javascript",
     "javascript",
     "javascriptreact",
     "json",
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "jasmine.javascript",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "javascript.preferences.noSemicolons": true,
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": true,
@@ -23,8 +31,9 @@
   "prettier.bracketSpacing": true,
   "suggest.floatEnable": true,
   "tslint.autoFixOnSave": false,
-  "tslint.jsEnable": false,
+  "tslint.jsEnable": true,
   "tsserver.enableJavascript": true,
+  "tsserver.enable": false,
   "typescript.preferences.noSemicolons": true,
   "typescript.preferences.quoteStyle": "single"
 }

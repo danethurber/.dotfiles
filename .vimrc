@@ -23,6 +23,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
   Plug 'moll/vim-node'
   Plug 'jparise/vim-graphql'
+  Plug 'HerringtonDarkholme/yats'
+  Plug 'jxnblk/vim-mdx-js'
   Plug 'ianks/vim-tsx'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
