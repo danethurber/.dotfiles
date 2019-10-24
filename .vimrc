@@ -30,6 +30,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'https://github.com/alok/notational-fzf-vim'
+  Plug 'vimwiki/vimwiki'
+  Plug 'rhysd/vim-grammarous'
 
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
@@ -39,7 +41,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-tslint-plugin', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
@@ -68,6 +70,7 @@ source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/language.vim
 source ~/.dotfiles/vim/markdown.vim
 source ~/.dotfiles/vim/search.vim
+source ~/.dotfiles/vim/wiki.vim
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

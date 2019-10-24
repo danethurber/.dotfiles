@@ -18,11 +18,9 @@
     "typescript",
     "typescriptreact"
   ],
-  "javascript.preferences.noSemicolons": true,
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": true,
   "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
   "prettier.useTabs": false,
   "prettier.tabWidth": 2,
   "prettier.semi": false,
@@ -30,10 +28,7 @@
   "prettier.trailingComma": "none",
   "prettier.bracketSpacing": true,
   "suggest.floatEnable": true,
-  "tslint.autoFixOnSave": false,
-  "tslint.jsEnable": true,
   "tsserver.enableJavascript": true,
   "tsserver.enable": false,
-  "typescript.preferences.noSemicolons": true,
   "typescript.preferences.quoteStyle": "single"
 }

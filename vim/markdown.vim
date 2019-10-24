@@ -1,3 +1,17 @@
+set spellsuggest+=10
+
+" Toggle spellchecking
+function! ToggleSpellCheck()
+  set spell!
+
+  if &spell
+    echo "Spellcheck ON"
+  else
+    echo "Spellcheck OFF"
+  endif
+endfunction
+
+nnoremap <silent> <Leader>S :call ToggleSpellCheck()<CR>
 " no folds
 let g:vim_markdown_folding_disabled = 1
 
@@ -21,25 +35,9 @@ let g:nv_use_short_pathnames = 1
 
 " open N-FZF
 nnoremap <silent> <localleader>N :NV<CR>
+
 " create new note binding
 let g:nv_create_note_key = 'ctrl-N'
+
 " open new notes in main window
 let g:nv_create_note_window = 'e'
-
-" toggle checkboxes
-function ToggleCheckbox()
-  let l:line=getline('.')
-  let l:curs=winsaveview()
-  
-  if l:line=~?'\s*-\s*\[\s*\].*'
-      s/\[\s*\]/[.]/
-  elseif l:line=~?'\s*-\s*\[\.\].*'
-      s/\[.\]/[x]/
-  elseif l:line=~?'\s*-\s*\[x\].*'
-      s/\[x\]/[ ]/
-  endif
-  call winrestview(l:curs)
-endfunction
-
-autocmd FileType markdown nnoremap <silent> - :call ToggleCheckbox()<CR>
-
