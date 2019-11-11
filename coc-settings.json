@@ -3,6 +3,15 @@
     "Markdown",
     "css",
     "graphql",
+    "json"
+  ],
+  "coc.preferences.rootPatterns": [
+    ".vim",
+    ".git",
+    ".projections.json"
+  ],
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
     "jasmine.javascript",
     "javascript",
     "javascriptreact",
@@ -10,25 +19,10 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "jasmine.javascript",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "javascript.preferences.quoteStyle": "single",
-  "javascript.validate.enable": true,
-  "prettier.eslintIntegration": true,
-  "prettier.useTabs": false,
-  "prettier.tabWidth": 2,
+  "prettier.formatterPriority": -1,
   "prettier.semi": false,
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "none",
-  "prettier.bracketSpacing": true,
   "suggest.floatEnable": true,
-  "tsserver.enableJavascript": true,
-  "tsserver.enable": false,
-  "typescript.preferences.quoteStyle": "single"
+  "tsserver.enable": true,
+  "tsserver.enableJavascript": true
 }

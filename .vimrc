@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'HerringtonDarkholme/yats'
   Plug 'jxnblk/vim-mdx-js'
   Plug 'ianks/vim-tsx'
+  Plug 'tmsvg/pear-tree'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -33,17 +34,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vimwiki/vimwiki'
   Plug 'rhysd/vim-grammarous'
 
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " NOTE: use `:PlugSnapshot plug.lock` to generator lock file
@@ -65,9 +56,9 @@ if &diff
   set noro
 endif
 
+source ~/.dotfiles/vim/coc.vim
 source ~/.dotfiles/vim/keyboard.vim
 source ~/.dotfiles/vim/window.vim
-source ~/.dotfiles/vim/language.vim
 source ~/.dotfiles/vim/markdown.vim
 source ~/.dotfiles/vim/search.vim
 source ~/.dotfiles/vim/wiki.vim
