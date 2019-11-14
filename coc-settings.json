@@ -3,6 +3,8 @@
     "Markdown",
     "css",
     "graphql",
+    "javascript",
+    "javascriptreact",
     "json"
   ],
   "coc.preferences.rootPatterns": [
@@ -19,7 +21,6 @@
     "typescript",
     "typescriptreact"
   ],
-  "prettier.formatterPriority": -1,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "suggest.floatEnable": true,
