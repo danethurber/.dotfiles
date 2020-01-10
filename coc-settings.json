@@ -3,9 +3,12 @@
     "Markdown",
     "css",
     "graphql",
+    "jasmine.javascript",
     "javascript",
     "javascriptreact",
-    "json"
+    "json",
+    "typescript",
+    "typescriptreact"
   ],
   "coc.preferences.rootPatterns": [
     ".vim",
