@@ -12,6 +12,7 @@ function! ToggleSpellCheck()
 endfunction
 
 nnoremap <silent> <Leader>S :call ToggleSpellCheck()<CR>
+
 " no folds
 let g:vim_markdown_folding_disabled = 1
 
@@ -41,3 +42,4 @@ let g:nv_create_note_key = 'ctrl-N'
 
 " open new notes in main window
 let g:nv_create_note_window = 'e'
+

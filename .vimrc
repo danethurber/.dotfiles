@@ -26,13 +26,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'HerringtonDarkholme/yats'
   Plug 'jxnblk/vim-mdx-js'
   Plug 'ianks/vim-tsx'
-  Plug 'tmsvg/pear-tree'
+  " Plug 'tmsvg/pear-tree'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'https://github.com/alok/notational-fzf-vim'
   Plug 'vimwiki/vimwiki'
-  Plug 'rhysd/vim-grammarous'
+  " Plug 'rhysd/vim-grammarous'
 
  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
