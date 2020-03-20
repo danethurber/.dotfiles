@@ -1,6 +1,8 @@
 call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
 
+  Plug 'ps-dev/ps-time-vim'
+
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
 
@@ -34,7 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vimwiki/vimwiki'
   " Plug 'rhysd/vim-grammarous'
 
- Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " NOTE: use `:PlugSnapshot plug.lock` to generator lock file
@@ -71,4 +73,5 @@ endif
 " commands to edit/source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
 
