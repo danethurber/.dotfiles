@@ -6,8 +6,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
 
+  Plug 'voldikss/vim-floaterm'
   Plug 'wincent/terminus'
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'RyanMillerC/better-vim-tmux-resizer'
 
   Plug 'tpope/vim-projectionist'
   Plug 'airblade/vim-gitgutter'
@@ -62,6 +64,7 @@ source ~/.dotfiles/vim/coc.vim
 source ~/.dotfiles/vim/keyboard.vim
 source ~/.dotfiles/vim/window.vim
 source ~/.dotfiles/vim/markdown.vim
+source ~/.dotfiles/vim/terminal.vim
 source ~/.dotfiles/vim/search.vim
 source ~/.dotfiles/vim/wiki.vim
 
@@ -73,5 +76,4 @@ endif
 " commands to edit/source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
 

@@ -19,6 +19,7 @@ PACKAGES=(
   gawk
   git
   hub
+  lazygit
   npm
   python
   python3
