@@ -10,11 +10,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "coc.preferences.rootPatterns": [
-    ".vim",
-    ".git",
-    ".projections.json"
-  ],
+  "coc.preferences.rootPatterns": [".vim", ".git", ".projections.json"],
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "jasmine.javascript",

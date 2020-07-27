@@ -1,0 +1,90 @@
+add_newline = false
+
+prompt_order = [
+  "username",
+  "hostname",
+  "kubernetes",
+  "directory",
+  "docker_context",
+  "package",
+  "dotnet",
+  # "elixir",
+  # "elm",
+  # "erlang",
+  "golang",
+  # "java",
+  # "julia",
+  # "nim",
+  "nodejs",
+  # "ocaml",
+  # "php",
+  # "purescript",
+  "python",
+  # "ruby",
+  # "rust",
+  # "terraform",
+  # "zig",
+  # "nix_shell",
+  # "conda",
+  # "memory_usage",
+  "aws",
+  # "env_var",
+  # "crystal",
+  "cmd_duration",
+  "custom",
+
+  "line_break",
+  "line_break",
+
+  "git_branch",
+  "git_commit",
+  "git_state",
+  "git_status",
+  "hg_branch",
+  "character",
+
+  # "jobs",
+  # "battery",
+  # "time",
+]
+
+[aws]
+symbol = " "
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[docker]
+symbol = " "
+
+[git_branch]
+style = "bold green"
+symbol = " "
+
+[git_status]
+modified = "⚡"
+prefix = ""
+stashed = ""
+suffix = ""
+untracked = ""
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+

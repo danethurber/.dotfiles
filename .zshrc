@@ -13,11 +13,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 
-ZSH_THEME="cloud"
+# ZSH_THEME="cloud"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(zsh-nvm brew git github git-extras tmux)
+plugins=(zsh-nvm brew git github git-extras tmux kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,4 +36,7 @@ stty -ixon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.secrets ] && source ~/.secrets
+
+export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+eval "$(starship init zsh)"
 
