@@ -4,48 +4,29 @@ prompt_order = [
   "username",
   "hostname",
   "kubernetes",
-  "directory",
   "docker_context",
-  "package",
-  "dotnet",
-  # "elixir",
-  # "elm",
-  # "erlang",
-  "golang",
-  # "java",
-  # "julia",
-  # "nim",
-  "nodejs",
-  # "ocaml",
-  # "php",
-  # "purescript",
-  "python",
-  # "ruby",
-  # "rust",
-  # "terraform",
-  # "zig",
-  # "nix_shell",
-  # "conda",
-  # "memory_usage",
-  "aws",
-  # "env_var",
-  # "crystal",
-  "cmd_duration",
-  "custom",
-
-  "line_break",
-  "line_break",
 
   "git_branch",
   "git_commit",
   "git_state",
   "git_status",
   "hg_branch",
-  "character",
 
-  # "jobs",
-  # "battery",
-  # "time",
+  "aws",
+  "golang",
+  "nodejs",
+  "python",
+  "ruby",
+
+  "package",
+
+  "cmd_duration",
+  "custom",
+
+  "line_break",
+
+  "directory",
+  "character",
 ]
 
 [aws]
@@ -56,19 +37,34 @@ full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
 
+[character]
+symbol = "➡"
+style_failure = "bold red"
+style_success = "bold 6"
+error_symbol = "⇨"
+use_symbol_for_status = true
+
 [docker]
 symbol = " "
 
 [git_branch]
-style = "bold green"
+style = "bold yellow"
 symbol = " "
 
 [git_status]
-modified = "⚡"
-prefix = ""
+style = "bold fg:241"
+conflicted.value = "☠" 
+conflicted.style = "red"
+modified.value = "ϟ" 
+modified.style = "bold red"
+prefix = "["
 stashed = ""
-suffix = ""
+suffix = "]"
 untracked = ""
+staged.value = " ++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
 
 [golang]
 symbol = " "
