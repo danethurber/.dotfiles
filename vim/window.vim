@@ -58,7 +58,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 
-let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['.DS_Store', '^node_modules$']
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
