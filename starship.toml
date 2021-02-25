@@ -1,33 +1,33 @@
 add_newline = false
 
-prompt_order = [
-  "username",
-  "hostname",
-  "kubernetes",
-  "docker_context",
+format = """\
+  $username\
+  $hostname\
+  $kubernetes\
+  $docker_context\
 
-  "git_branch",
-  "git_commit",
-  "git_state",
-  "hg_branch",
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $hg_branch\
 
-  "aws",
-  "golang",
-  "nodejs",
-  "python",
-  "ruby",
+  $aws\
+  $golang\
+  $nodejs\
+  $python\
+  $ruby\
 
-  "package",
+  $package\
 
-  "cmd_duration",
-  "custom",
+  $cmd_duration\
+  $custom\
 
-  "line_break",
+  $line_break\
 
-  "directory",
-  "git_status",
-  "character",
-]
+  $directory\
+  $git_status\
+  $character\
+  """
 
 [aws]
 symbol = " "
@@ -38,10 +38,10 @@ charging_symbol = ""
 discharging_symbol = ""
 
 [character]
-symbol = " ➡"
+symbol = " >"
 style_failure = "bold red"
 style_success = "bold 6"
-error_symbol = " ⇨"
+error_symbol = " >"
 use_symbol_for_status = true
 
 [docker]
@@ -53,15 +53,17 @@ symbol = " "
 
 [git_status]
 style = "bold fg:6"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
 deleted = ""
 conflicted.value = "☠" 
 conflicted.style = "red"
 modified.value = "ϟ" 
 modified.style = "bold red"
 renamed = ""
-prefix = "["
+format = '([\[$all_status$ahead_behind\]]($style) )'
 stashed = ""
-suffix = "]"
 untracked = ""
 staged.value = " ++"
 staged.style = "green"

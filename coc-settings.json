@@ -12,7 +12,7 @@
   ],
   "coc.preferences.rootPatterns": [".vim", ".git", ".projections.json"],
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
+  "eslint.probe": [
     "jasmine.javascript",
     "javascript",
     "javascriptreact",
@@ -22,6 +22,8 @@
   ],
   "prettier.semi": false,
   "prettier.singleQuote": true,
+  "sql.lintOnChange": true,
+  "sql.lintOnSave": true,
   "suggest.floatEnable": true,
   "tsserver.enable": true,
   "tsserver.enableJavascript": true

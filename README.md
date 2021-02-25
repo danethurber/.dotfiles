@@ -4,6 +4,7 @@ install dotfiles
 cd ~/
 git clone git@github.com:danethurber/.dotfiles.git
 ln -s .dotfiles/.zshrc .zshrc
+ln -s .dotfiles/.psqlrc .psqlrc
 
 vi .gitconfig
 
@@ -45,8 +46,8 @@ vi ~/.secrets
 install current node and set as default
 
 ```
-nvm install 10.11.0
-nvm alias default 10.11.0
+nvm install 15.3.0
+nvm alias default 15.3.0
 ```
 
 ## install vim-plug
