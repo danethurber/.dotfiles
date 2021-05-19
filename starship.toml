@@ -38,13 +38,10 @@ charging_symbol = ""
 discharging_symbol = ""
 
 [character]
-symbol = " >"
-style_failure = "bold red"
-style_success = "bold 6"
-error_symbol = " >"
-use_symbol_for_status = true
+success_symbol = " >(bold 6)"
+error_symbol = " >(bold red)"
 
-[docker]
+[docker_context]
 symbol = " "
 
 [git_branch]
@@ -65,10 +62,7 @@ renamed = ""
 format = '([\[$all_status$ahead_behind\]]($style) )'
 stashed = ""
 untracked = ""
-staged.value = " ++"
-staged.style = "green"
-staged_count.enabled = true
-staged_count.style = "green"
+staged = '[++\($count\)](green)'
 
 [golang]
 symbol = " "
