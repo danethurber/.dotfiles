@@ -1,99 +1,83 @@
 #!/usr/bin/env bash
 
-echo "Starting bootstrapping"
-
-# Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
-    echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo Installing homebrew...
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Update homebrew recipes
-brew update
+echo Updating homebrew...
 
-# Install Bash 4
-brew install bash
+brew update
+brew upgrade
 
 PACKAGES=(
-  fd
-  gawk
   git
-  hub
-  lazygit
-  npm
-  python
-  python3
-  reattach-to-user-namespace
-  ripgrep
+  nvm
+  starship
   tmux
-  tree
   vim
-  wget
-  yarn
-  zsh
+  visual-studio-code
+  zoom
 )
 
-echo "Installing packages..."
-brew install ${PACKAGES[@]}
-
-echo "Cleaning up..."
-brew cleanup
-
-echo "Installing cask..."
-brew install caskroom/cask/brew-cask
+for item in "${PACKAGES[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install "${item}"
+done
 
 CASKS=(
-  gpg-suite
-  iterm2
+  gpg-suite iterm2
   spotify
   tunnelblick
 )
 
-echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+for item in "${CASKS[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install --cask "${item}"
+done
 
-
-echo "Installing fonts..."
+FONTS=(
+  font-hack-nerd-font
+)
 
 brew tap homebrew/cask-fonts
 
-FONTS=(
-    font-clear-sans
-    font-hack-nerd-font
-    font-roboto
-)
-brew cask install ${FONTS[@]}
+for item in "${FONTS[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install --cask "${item}"
+done
 
-echo "Installing global npm packages..."
-# npm install marked -g
 
-echo "Configuring OSX..."
+echo Verifying Homebrew
 
-# Set fast key repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
-
-# Require password as soon as screensaver or sleep mode starts
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Show filename extensions by default
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Enable tap-to-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Disable "natural" scroll
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-echo "Creating folder structure..."
-[[ ! -d Projects ]] && mkdir Projects
-[[ ! -d Notes ]] && mkdir Notes
-
-echo "Verifying "
-
+brew cleanup
 brew doctor
 brew missing
 
-echo "Bootstrapping complete"
+# echo Installing on-my-zsh...
+# /bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+echo Configuring Git
+
+git config --global include.path "~/.dotfiles/.gitconfig"
+git config --global user.name "Dane Thurber"
+git config --global user.email "dane.thurber@gmail.com"
+
+echo Creating User Folders/Files
+
+[[ ! -d ~/.config ]] && mkdir ~/.config
+[[ ! -d ~/.nvm ]] && mkdir ~/.nvm
+[[ ! -d ~/Notes ]] && mkdir ~/Notes
+[[ ! -d ~/Playground ]] && mkdir ~/Playground
+[[ ! -d ~/Projects ]] && mkdir ~/Projects
+
+[[ ! -d ~/.secrets ]] && mkdir ~/.secrets
+
+echo Symlinking config files
+
+[[ ! -d ~/.editorconfig ]] && ln -s ~/.dotfiles/.editorconfig ~/.editorconfig
+[[ ! -d ~/.psqlrc ]] && ln -s ~/.dotfiles/.psqlrc ~/.psqlrc
+[[ ! -d ~/.tmux.conf ]] && ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+[[ ! -d ~/.config/starship.toml ]] && ln -s ~/.dotfiles/starship.tom ~/.config/starship.toml
+[[ ! -d ~/.vimrc ]] && ln -s ~/.dotfiles/.vimrc ~/.vimrc
+[[ ! -d ~/.zshrc ]] && ln -s ~/.dotfiles/.zshrc ~/.zshrc
+[[ ! -d ~/coc-settings.json ]] && ln -s ~/.dotfiles/coc-settings.json ~/coc-settings.json
+
+echo Bootstrapping Completed!

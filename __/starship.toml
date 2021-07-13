@@ -5,19 +5,25 @@ format = """\
   $hostname\
   $kubernetes\
   $docker_context\
+
   $git_branch\
   $git_commit\
   $git_state\
   $hg_branch\
+
   $aws\
   $golang\
   $nodejs\
   $python\
   $ruby\
+
   $package\
+
   $cmd_duration\
   $custom\
+
   $line_break\
+
   $directory\
   $git_status\
   $character\
@@ -81,3 +87,4 @@ symbol = " "
 
 [python]
 symbol = " "
+

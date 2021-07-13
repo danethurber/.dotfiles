@@ -47,7 +47,7 @@
 \pset format wrapped
 
 -- Show how long it takes to run each query.
-\timing
+\timing 
 
 \setenv EDITOR '/usr/local/bin/vi'
 
