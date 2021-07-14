@@ -1,46 +1,49 @@
 #!/usr/bin/env bash
 
-echo "Starting bootstrapping"
+step_count=0
 
-# Check for Homebrew, install if we don't have it
+highlight=$(tput setaf 4)
+text=$(tput sgr0)
+
+log () {
+  printf "[$2] ${highlight}$1 ${text}\n"
+}
+
+# ---
+log "Bootstrapping" "!"
+
+# ---
+step_count=$[$step_count+1]
+log "Updating Homebrew..." $step_count
+
 if test ! $(which brew); then
-    echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo Installing homebrew...
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Update homebrew recipes
-brew update
+brew update --quiet
+brew upgrade --quiet
 
-# Install Bash 4
-brew install bash
+# ---
+step_count=$[$step_count+1]
+log "Installing Packages..." $step_count
 
 PACKAGES=(
-  fd
-  gawk
   git
-  hub
-  lazygit
-  npm
-  python
-  python3
-  reattach-to-user-namespace
-  ripgrep
+  neovim
+  nvm
+  starship
   tmux
-  tree
-  vim
-  wget
-  yarn
-  zsh
+  visual-studio-code
 )
 
-echo "Installing packages..."
-brew install ${PACKAGES[@]}
+for item in "${PACKAGES[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install "${item}"
+done
 
-echo "Cleaning up..."
-brew cleanup
-
-echo "Installing cask..."
-brew install caskroom/cask/brew-cask
+# ---
+step_count=$[$step_count+1]
+log "Installing Casks..." $step_count
 
 CASKS=(
   gpg-suite
@@ -49,51 +52,84 @@ CASKS=(
   tunnelblick
 )
 
-echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+for item in "${CASKS[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install --cask "${item}"
+done
 
+# ---
+step_count=$[$step_count+1]
+log "Installing Fonts..." $step_count
 
-echo "Installing fonts..."
+FONTS=(
+  font-hack-nerd-font
+)
 
 brew tap homebrew/cask-fonts
 
-FONTS=(
-    font-clear-sans
-    font-hack-nerd-font
-    font-roboto
-)
-brew cask install ${FONTS[@]}
+for item in "${FONTS[@]}"; do
+  brew info "${item}" | grep --quiet 'Not installed' && brew install --cask "${item}"
+done
 
-echo "Installing global npm packages..."
-# npm install marked -g
+# ---
+step_count=$[$step_count+1]
+log "Verifying Homebrew..." $step_count
 
-echo "Configuring OSX..."
+brew cleanup --quiet
+brew missing --quiet
 
-# Set fast key repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+# ---
+step_count=$[$step_count+1]
+log "Configuring Git..." $step_count
 
-# Require password as soon as screensaver or sleep mode starts
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+git config --global include.path "~/.dotfiles/.gitconfig"
+git config --global user.name "Dane Thurber"
+git config --global user.email "dane.thurber@gmail.com"
 
-# Show filename extensions by default
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# ---
+step_count=$[$step_count+1]
+log "Configuring OSX..." $step_count
 
-# Enable tap-to-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# # Set fast key repeat rate
+# defaults write NSGlobalDomain KeyRepeat -int 0
 
-# Disable "natural" scroll
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+# # Require password as soon as screensaver or sleep mode starts
+# defaults write com.apple.screensaver askForPassword -int 1
+# defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-echo "Creating folder structure..."
-[[ ! -d Projects ]] && mkdir Projects
-[[ ! -d Notes ]] && mkdir Notes
+# # Show filename extensions by default
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-echo "Verifying "
+# # Enable tap-to-click
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-brew doctor
-brew missing
+# # Disable "natural" scroll
+# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-echo "Bootstrapping complete"
+# ---
+step_count=$[$step_count+1]
+log "Creating User Folders/Files..." $step_count
 
+[[ ! -d ~/Notes ]] && mkdir ~/Notes
+[[ ! -d ~/Playground ]] && mkdir ~/Playground
+[[ ! -d ~/Projects ]] && mkdir ~/Projects
+
+[[ ! -d ~/.config ]] && mkdir ~/.config
+[[ ! -d ~/.nvm ]] && mkdir ~/.nvm
+[[ ! -d ~/.secrets ]] && mkdir ~/.secrets
+
+# ---
+step_count=$[$step_count+1]
+log "Symlinking Config Files..." $step_count
+
+[[ ! -d ~/.config/nvim/init.lua ]] && ln -nfs ~/.dotfiles/neovim/init.lua ~/.config/nvim/init.lua
+[[ ! -d ~/.config/starship.toml ]] && ln -nfs ~/.dotfiles/starship.tom ~/.config/starship.toml
+[[ ! -d ~/.editorconfig ]] && ln -nfs ~/.dotfiles/.editorconfig ~/.editorconfig
+[[ ! -d ~/.psqlrc ]] && ln -nfs ~/.dotfiles/.psqlrc ~/.psqlrc
+[[ ! -d ~/.tmux.conf ]] && ln -nfs ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+[[ ! -d ~/.vimrc ]] && ln -nfs ~/.dotfiles/vim/.vimrc ~/.vimrc
+[[ ! -d ~/.zshrc ]] && ln -nfs ~/.dotfiles/zsh/.zshrc ~/.zshrc
+[[ ! -d ~/coc-settings.json ]] && ln -nfs ~/.dotfiles/coc-settings.json ~/coc-settings.json
+
+# ---
+log "Bootstrapping Completed! \n" "!"

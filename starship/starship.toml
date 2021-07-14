@@ -1,0 +1,67 @@
+add_newline = false
+scan_timeout = 10
+
+format = """
+[┌](dimmed blue) $directory$nodejs$package$cmd_duration
+$character$git_commit$git_state$git_branch$git_status
+"""
+
+[aws]
+disabled = true
+
+[character]
+error_symbol = "[└─>](dimmed blue) [✗](dimmed red)"
+success_symbol = "[└─>](dimmed blue)"
+vicmd_symbol = "[└─<](dimmed blue)"
+
+[cmd_duration]
+format = "([|](dimmed blue) [task took $duration]($style)) "
+min_time = 2_000
+style = "dimmed yellow"
+
+[directory]
+format = "([$read_only]($read_only_style) )[$path]($style) "
+read_only = ""
+style = "bold blue"
+
+[docker_context]
+symbol = " "
+
+[hostname]
+format = "[@$hostname]($style)"
+ssh_only = false
+style = "dimmed blue"
+
+[git_branch]
+format = '([$symbol$branch]($style) )'
+style = "bold green"
+symbol = " "
+
+[git_status]
+style = "bold red"
+
+[golang]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+detect_files = [".nvmrc"]
+format = "([|](dimmed blue) [$symbol($version)]($style)) "
+style = "dimmed blue"
+
+[package]
+display_private=true
+format = "([|](dimmed blue) [$symbol$version]($style)) "
+style = "dimmed 208"
+symbol = " "
+
+[username]
+format = "[$user]($style)"
+show_always = true
+style_root = "bold inverted blue"
+style_user = "bold dimmed blue"
