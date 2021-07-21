@@ -46,6 +46,6 @@ global.nvim_tree_add_trailing = 1
 vim.cmd([[
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-let g:indent_blankline_filetype_exclude = ['dashboard']
+let g:indent_blankline_filetype_exclude = ['dashboard', 'nvim-tree']
 let g:indent_blankline_buftype_exclude = ['terminal']
 ]])
