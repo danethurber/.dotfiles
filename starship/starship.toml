@@ -2,8 +2,8 @@ add_newline = false
 scan_timeout = 10
 
 format = """
-[┌](dimmed blue) $directory$nodejs$package$cmd_duration
-$character$git_commit$git_state$git_branch$git_status
+[┌](dimmed blue) $git_branch$nodejs$package$cmd_duration
+$character$directory$git_commit$git_state$git_status
 """
 
 [aws]
