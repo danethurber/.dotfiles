@@ -49,7 +49,10 @@ return require('packer').startup({function()
     }
   end }
   use 'sbdchd/neoformat'
-  use 'glepnir/lspsaga.nvim'
+  use {'glepnir/lspsaga.nvim',
+    event = 'BufRead',
+    config = function() require('lspsaga').init_lsp_saga {}
+  end }
   use { 'nvim-telescope/telescope.nvim',
     requires = {{ 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }}
   }
@@ -60,6 +63,7 @@ return require('packer').startup({function()
   end }
 
   use 'tpope/vim-commentary'
+  use 'tpope/vim-projectionist'
   use 'tpope/vim-surround'
 
   use 'arcticicestudio/nord-vim'
@@ -71,7 +75,6 @@ return require('packer').startup({function()
   use 'glepnir/dashboard-nvim'
 
   use { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead' }
-  use { 'beauwilliams/focus.nvim', event = 'BufRead' }
 
   use 'kyazdani42/nvim-tree.lua'
   use { 'lewis6991/gitsigns.nvim',
