@@ -38,6 +38,7 @@ style = "bold green"
 symbol = " "
 
 [git_status]
+stashed = ""
 style = "bold red"
 
 [golang]

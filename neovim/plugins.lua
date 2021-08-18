@@ -74,7 +74,7 @@ return require('packer').startup({function()
 
   use 'glepnir/dashboard-nvim'
 
-  use { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead' }
+  -- use { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead' }
 
   use 'kyazdani42/nvim-tree.lua'
   use { 'lewis6991/gitsigns.nvim',
