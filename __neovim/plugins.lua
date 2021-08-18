@@ -120,4 +120,3 @@ config = {
     open_fn = require('packer.util').float,
   }
 }})
-
