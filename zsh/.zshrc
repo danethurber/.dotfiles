@@ -4,6 +4,9 @@ alias vi="nvim"
 alias vim="nvim"
 alias whois="whois -h whois-servers.net"
 
+alias yarn-linked="find . -type l | grep -v .bin | sed 's/^\.\/node_modules\///'"
+alias yarn-unlink-all="yarn-linked | xargs yarn unlink && yarn install --check-files"
+
 alias :q="exit"
 
 export EDITOR=nvim
