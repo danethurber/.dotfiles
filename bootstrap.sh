@@ -125,6 +125,7 @@ log "Symlinking Config Files..." $step_count
 [[ ! -d ~/.config/nvim/init.lua ]] && ln -nfs ~/.dotfiles/neovim/init.lua ~/.config/nvim/init.lua
 [[ ! -d ~/.config/starship.toml ]] && ln -nfs ~/.dotfiles/starship.tom ~/.config/starship.toml
 [[ ! -d ~/.editorconfig ]] && ln -nfs ~/.dotfiles/.editorconfig ~/.editorconfig
+~/prettier.config.js
 [[ ! -d ~/.psqlrc ]] && ln -nfs ~/.dotfiles/.psqlrc ~/.psqlrc
 [[ ! -d ~/.tmux.conf ]] && ln -nfs ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 [[ ! -d ~/.vimrc ]] && ln -nfs ~/.dotfiles/vim/.vimrc ~/.vimrc

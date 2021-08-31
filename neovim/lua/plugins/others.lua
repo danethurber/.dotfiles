@@ -41,4 +41,12 @@ configs.lualine = function()
   end
 end
 
+configs.trouble = function()
+  local present, trouble = pcall(require, "trouble")
+
+  if present then
+    trouble.setup()
+  end
+end
+
 return configs

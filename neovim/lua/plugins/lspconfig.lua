@@ -101,8 +101,11 @@ lspinstall.post_install_hook = function()
 end
 
 -- replace the default lsp diagnostic symbols
-function lspSymbol(name, icon)
-  vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+local function lspSymbol(name, icon)
+  vim.fn.sign_define("LspDiagnosticsSign" .. name, {
+    text = icon,
+    numhl = "LspDiagnosticsDefaul" .. name
+  })
 end
 
 lspSymbol("Error", "")
@@ -116,13 +119,23 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   {
     virtual_text = {
       prefix = "",
-      spacing = 0
+      spacing = 5,
+      severity_limit = 'Warning'
     },
+    -- virtual_text = false,
     signs = true,
     underline = true,
     update_in_insert = false
   }
 )
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+   border = "single",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+   border = "single",
+})
 
 -- suppress error messages from lang servers
 vim.notify = function(msg, log_level, _opts)

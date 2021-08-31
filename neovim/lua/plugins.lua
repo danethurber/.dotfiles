@@ -77,6 +77,14 @@ return packer.startup({ function()
     },
   }
 
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("plugins.others").trouble()
+    end
+  }
+
   -- file manager, picker etc
   use { "kyazdani42/nvim-tree.lua",
     cmd = "NvimTreeToggle",

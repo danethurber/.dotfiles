@@ -33,6 +33,9 @@ cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
 -- NvimTree
 map("n", "<leader>x", ":NvimTreeToggle<CR>", opt)
 
+-- Trouble
+map("n", "<leader>t", ":TroubleToggle<CR>", opt)
+
 -- compe stuff
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

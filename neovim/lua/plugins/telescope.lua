@@ -1,7 +1,10 @@
 local present, telescope = pcall(require, "telescope")
+
 if not present then
   return
 end
+
+local trouble = require("trouble.providers.telescope")
 
 telescope.setup({
   defaults = {
@@ -17,6 +20,10 @@ telescope.setup({
       width = 0.87,
       height = 0.80,
       preview_cutoff = 120
+    },
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
     },
     prompt_prefix = "   ",
   },
