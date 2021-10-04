@@ -30,7 +30,13 @@ return packer.startup({ function()
   use { "neovim/nvim-lspconfig",
     after = "nvim-lspinstall",
     config = function()
-      require "plugins.lspconfig"
+      require "plugins.lspconfig.init"
+    end
+  }
+  use { 'RishabhRD/nvim-lsputils',
+    requires = { 'RishabhRD/popfix' },
+    setup = function()
+      require("plugins.others").lsputils()
     end
   }
 
@@ -45,13 +51,6 @@ return packer.startup({ function()
     event = 'BufRead',
     config = function()
       require('lspsaga').init_lsp_saga {}
-    end
-  }
-
-  use { 'sbdchd/neoformat',
-    event = 'BufRead',
-    config = function()
-      require("plugins.others").neoformat()
     end
   }
 
@@ -96,19 +95,14 @@ return packer.startup({ function()
   use "kyazdani42/nvim-web-devicons"
 
   use { "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
     requires = {{ 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }},
     config = function()
       require "plugins.telescope"
     end
   }
-  use { "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
-    cmd = "Telescope"
-  }
-  use { "nvim-telescope/telescope-media-files.nvim",
-    cmd = "Telescope"
-  }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use "nvim-telescope/telescope-media-files.nvim"
+
   -- git related
   use { "lewis6991/gitsigns.nvim",
     after = "plenary.nvim",
@@ -132,8 +126,16 @@ return packer.startup({ function()
     end
   }
 
+  use { 'nvim-lua/lsp-status.nvim',
+    config = function()
+      require("plugins.others").lspstatus()
+    end
+  }
   use { 'hoob3rt/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    requires = {
+      { 'kyazdani42/nvim-web-devicons' },
+      { 'nvim-lua/lsp-status.nvim' }
+    },
     event = 'BufRead',
     config = function()
       require("plugins.others").lualine()
