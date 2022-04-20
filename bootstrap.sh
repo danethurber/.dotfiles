@@ -19,6 +19,9 @@ log "Updating Homebrew..." $step_count
 if test ! $(which brew); then
   echo Installing homebrew...
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dane/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 brew update --quiet
@@ -30,31 +33,19 @@ log "Installing Packages..." $step_count
 
 PACKAGES=(
   git
+  gnupg 
+  gnupg2
   neovim
   nvm
+  python
   starship
   tmux
-  visual-studio-code
 )
 
 for item in "${PACKAGES[@]}"; do
   brew info "${item}" | grep --quiet 'Not installed' && brew install "${item}"
 done
 
-# ---
-step_count=$[$step_count+1]
-log "Installing Casks..." $step_count
-
-CASKS=(
-  gpg-suite
-  iterm2
-  spotify
-  tunnelblick
-)
-
-for item in "${CASKS[@]}"; do
-  brew info "${item}" | grep --quiet 'Not installed' && brew install --cask "${item}"
-done
 
 # ---
 step_count=$[$step_count+1]
@@ -87,27 +78,6 @@ git config --global user.email "dane.thurber@gmail.com"
 
 # ---
 step_count=$[$step_count+1]
-log "Configuring OSX..." $step_count
-
-# # Set fast key repeat rate
-# defaults write NSGlobalDomain KeyRepeat -int 0
-
-# # Require password as soon as screensaver or sleep mode starts
-# defaults write com.apple.screensaver askForPassword -int 1
-# defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# # Show filename extensions by default
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# # Enable tap-to-click
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# # Disable "natural" scroll
-# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-# ---
-step_count=$[$step_count+1]
 log "Creating User Folders/Files..." $step_count
 
 [[ ! -d ~/Notes ]] && mkdir ~/Notes
@@ -120,17 +90,44 @@ log "Creating User Folders/Files..." $step_count
 
 # ---
 step_count=$[$step_count+1]
+log "Installing ohmyzsh" $step_count
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# ---
+step_count=$[$step_count+1]
 log "Symlinking Config Files..." $step_count
 
-[[ ! -d ~/.config/nvim/init.lua ]] && ln -nfs ~/.dotfiles/neovim/init.lua ~/.config/nvim/init.lua
+[[ ! -d ~/.config/lvim/config.lua ]] && ln -nfs ~/.dotfiles/lvim/config.lua ~/.config/lvim/config.lua
 [[ ! -d ~/.config/starship.toml ]] && ln -nfs ~/.dotfiles/starship.tom ~/.config/starship.toml
-[[ ! -d ~/.editorconfig ]] && ln -nfs ~/.dotfiles/.editorconfig ~/.editorconfig
-~/prettier.config.js
 [[ ! -d ~/.psqlrc ]] && ln -nfs ~/.dotfiles/.psqlrc ~/.psqlrc
+[[ ! -d ~/.editorconfig ]] && ln -nfs ~/.dotfiles/.editorconfig ~/.editorconfig
 [[ ! -d ~/.tmux.conf ]] && ln -nfs ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
-[[ ! -d ~/.vimrc ]] && ln -nfs ~/.dotfiles/vim/.vimrc ~/.vimrc
 [[ ! -d ~/.zshrc ]] && ln -nfs ~/.dotfiles/zsh/.zshrc ~/.zshrc
-[[ ! -d ~/coc-settings.json ]] && ln -nfs ~/.dotfiles/coc-settings.json ~/coc-settings.json
+# [[ ! -d ~/.vimrc ]] && ln -nfs ~/.dotfiles/vim/.vimrc ~/.vimrc
+
+# [[ ! -d ~/.config/nvim/init.lua ]] && ln -nfs ~/.dotfiles/neovim/init.lua ~/.config/nvim/init.lua
+# [[ ! -d ~/coc-settings.json ]] && ln -nfs ~/.dotfiles/coc-settings.json ~/coc-settings.json
+
+# ---
+step_count=$[$step_count+1]
+log "Installing Node" $step_count
+nvm install node
+
+# ---
+if test ! $(which cargo); then
+  step_count=$[$step_count+1]
+  log "Installing Rust" $step_count
+  curl https://sh.rustup.rs -sSf | sh
+
+fi
+# ---
+if test ! $(which lvim); then
+  step_count=$[$step_count+1]
+  log "Installing LunarVim" $step_count
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+fi
+
 
 # ---
 log "Bootstrapping Completed! \n" "!"
+

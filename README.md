@@ -21,18 +21,3 @@ run the bootstrap command
 
 - config iterm to use the color profile found in this repo
 
-## node/nvm
-
-install current node and set as default
-
-```
-nvm install node
-```
-
-## neovim
-
-install plugins with packer
-
-```
-:PackerInstall
-```
