@@ -25,7 +25,6 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 gpg-connect-agent /bye
 
-
 export PATH=$PATH:./node_modules/.bin:~/.local/bin
 
 [ -f ~/.secrets ] && source ~/.secrets
@@ -36,6 +35,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   tmux
 
+  aws
   colored-man-pages
   docker
   dotenv
@@ -47,6 +47,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# source ~/.bash_profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -54,3 +55,19 @@ export NVM_DIR="$HOME/.nvm"
 
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

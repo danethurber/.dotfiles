@@ -32,9 +32,11 @@ step_count=$[$step_count+1]
 log "Installing Packages..." $step_count
 
 PACKAGES=(
+  awscli
   git
   gnupg 
   gnupg2
+  jq
   neovim
   nvm
   python

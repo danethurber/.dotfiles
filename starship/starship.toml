@@ -1,13 +1,14 @@
 add_newline = false
 scan_timeout = 10
-
 format = """
-[┌](dimmed blue) $git_branch$nodejs$package$cmd_duration
+
+[┌](dimmed blue) $git_branch$nodejs$package$cmd_duration$aws
 $character$directory$git_commit$git_state$git_status
 """
 
 [aws]
-disabled = true
+format = '[($profile )(\($region\) )(\[$duration\] )]($style)'
+style = "bold yellow"
 
 [character]
 error_symbol = "[└─>](dimmed blue) [✗](dimmed red)"
@@ -34,8 +35,8 @@ style = "dimmed blue"
 
 [git_branch]
 format = '([$symbol$branch]($style) )'
-style = "bold green"
 symbol = " "
+style = "bold green"
 
 [git_status]
 stashed = ""
@@ -56,10 +57,13 @@ format = "([|](dimmed blue) [$symbol($version)]($style)) "
 style = "dimmed blue"
 
 [package]
-display_private=true
+display_private = true
 format = "([|](dimmed blue) [$symbol$version]($style)) "
 style = "dimmed 208"
 symbol = " "
+
+[python]
+format = "([|](dimmed blue) [$virtualenv]($style)) "
 
 [username]
 format = "[$user]($style)"
