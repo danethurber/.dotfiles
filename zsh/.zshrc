@@ -1,3 +1,5 @@
+[ -f ~/.dotfiles/aliases/aws ] && source ~/.dotfiles/aliases/aws
+
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias whois="whois -h whois-servers.net"
@@ -71,3 +73,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# bun completions
+[ -s "/Users/dane/.bun/_bun" ] && source "/Users/dane/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
