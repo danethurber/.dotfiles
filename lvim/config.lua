@@ -1,41 +1,48 @@
 -- PLUGINS
+
 lvim.plugins = {
+  "stevearc/dressing.nvim",
   "gpanders/editorconfig.nvim",
   "rmehri01/onenord.nvim",
   "lvimuser/lsp-inlayhints.nvim",
   {
     "tpope/vim-surround",
     keys = { "c", "d", "y" }
-  }
+  },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    }
+  },
+
+  -- javascript
+  "nvim-neotest/neotest-jest",
+
+  -- python
+  "ChristianChiarulli/swenv.nvim",
+  "mfussenegger/nvim-dap-python",
+  "nvim-neotest/neotest-python",
 }
 
--- OPTIONS
 
-lvim.colorscheme = "onenord"
-lvim.log.level = "warn"
+-- GENERAL/INTERFACE
+
+lvim.reload_config_on_save = true
+
 vim.o.background = "dark"
+lvim.colorscheme = "onenord"
+lvim.transparent_window = false
+lvim.log.level = "warn"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.breadcrumbs.active = true
-lvim.builtin.dap.active = true
 lvim.builtin.illuminate.active = false
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
-
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
-
-lvim.builtin.terminal.active = true
-lvim.builtin.terminal.open_mapping = "<C-t>"
-
-lvim.builtin.treesitter.auto_install = true
-lvim.builtin.treesitter.highlight.enabled = true
-
-lvim.reload_config_on_save = true
-lvim.transparent_window = false
-
-lvim.format_on_save.enabled = true
 
 local options = {
   backup = false, -- creates a backup file
@@ -87,167 +94,121 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 
--- KEYMAPS
+
+-- GENERAL KEYMAPPING
 
 lvim.leader = "space"
 
-local opts = { noremap = true, silent = true }
+local key_options = { noremap = true, silent = true }
 
 local keymap = vim.keymap.set
-keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
+keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", key_options)
 
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
 lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
+
 lvim.keys.visual_mode["J"] = ":m '>+1<CR>gv=gv"
 lvim.keys.visual_mode["K"] = ":m '<-2<CR>gv=gv"
-lvim.keys.normal_mode["<leader><leader>"] = ":Telescope buffers<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
-lvim.keys.normal_mode["<leader>t"] = "<cmd>TroubleToggle<CR>"
-lvim.keys.normal_mode["<leader>o"] = "<cmd>SymbolsOutline<CR>"
+keymap("n", "<m-h>", "<C-w>h", key_options)
+keymap("n", "<m-j>", "<C-w>j", key_options)
+keymap("n", "<m-k>", "<C-w>k", key_options)
+keymap("n", "<m-l>", "<C-w>l", key_options)
+keymap("n", "<m-tab>", "<c-6>", key_options)
 
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Terminal",
---   f = { "<cmd>ToggleTerm<cr>", "Floating terminal" },
---   v = { "<cmd>2ToggleTerm size=30 direction=vertical<cr>", "Split vertical" },
---   h = { "<cmd>2ToggleTerm size=30 direction=horizontal<cr>", "Split horizontal" },
--- }
 
-keymap("n", "<m-h>", "<C-w>h", opts)
-keymap("n", "<m-j>", "<C-w>j", opts)
-keymap("n", "<m-k>", "<C-w>k", opts)
-keymap("n", "<m-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
+-- TREE
 
--- Resize with arrows
--- keymap("n", "<C-Up>", ":resize -2<CR>", opts)
--- keymap("n", "<C-Down>", ":resize +2<CR>", opts)
--- keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
--- keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 
--- AUTO_COMMANDS
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    vim.cmd "set formatoptions-=cro"
-  end,
-})
+-- TERMINAL
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "Jaq" },
-  callback = function()
-    vim.cmd [[
-        nnoremap <silent> <buffer> <m-r> :close<CR>
-        " nnoremap <silent> <buffer> <m-r> <NOP>
-        set nobuflisted
-      ]]
-  end,
-})
+lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = "<C-t>"
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "" },
-  callback = function()
-    local buf_ft = vim.bo.filetype
-    if buf_ft == "" or buf_ft == nil then
-      vim.cmd [[
-        nnoremap <silent> <buffer> q :close<CR>
-        " nnoremap <silent> <buffer> <c-j> j<CR>
-        " nnoremap <silent> <buffer> <c-k> k<CR>
-        set nobuflisted
-      ]]
-    end
-  end,
-})
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Terminal",
+  f = { "<cmd>ToggleTerm<cr>", "Floating terminal" },
+  v = { "<cmd>2ToggleTerm size=30 direction=vertical<cr>", "Split vertical" },
+  h = { "<cmd>2ToggleTerm size=30 direction=horizontal<cr>", "Split horizontal" },
+}
 
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   pattern = { "" },
---   callback = function()
---     local get_project_dir = function()
---       local cwd = vim.fn.getcwd()
---       local project_dir = vim.split(cwd, "/")
---       local project_name = project_dir[#project_dir]
---       return project_name
---     end
 
---     vim.opt.titlestring = get_project_dir() .. " - nvim"
---   end,
--- })
+-- LANGUAGE SUPPORT
 
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   pattern = { "term://*" },
---   callback = function()
---     vim.cmd "startinsert!"
---     vim.cmd "set cmdheight=1"
---   end,
--- })
+lvim.builtin.which_key.mappings["P"] = {
+  name = "+Python",
+  c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+}
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
-})
+-- FORMATTING
 
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd "tabdo wincmd ="
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
-  callback = function()
-    vim.cmd "quit"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    vim.cmd "set formatoptions-=cro"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  callback = function()
-    vim.highlight.on_yank { higroup = "Visual", timeout = 40 }
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function()
-    vim.cmd "hi link illuminatedWord LspReferenceText"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*" },
-  callback = function()
-    vim.cmd "checktime"
-  end,
-})
-
--- LSP
+lvim.format_on_save.enabled = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
+  { name = "black" },
   { command = "stylua" },
   {
     command = "prettier",
-    -- extra_args = { "--print-width", "120" },
+    extra_args = { "--print-width", "120" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "css" },
   },
 }
+
+-- LINTING
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
     command = "eslint",
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
+  { command = "flake8", filetypes = { "python" } }
+}
+
+
+-- TESTING
+
+lvim.builtin.dap.active = true
+
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+pcall(function()
+  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+end)
+
+require("neotest").setup({
+  adapters = {
+    require('neotest-jest')({
+      env = { CI = true },
+      jestCommand = require('neotest-jest.jest-util').getJestCommand(vim.fn.expand '%:p:h')
+    }),
+    require('neotest-python')({
+      dap = { justMyCode = false }
+    })
+  }
+})
+
+lvim.builtin.which_key.mappings["d"] = {
+  name = "+Test/Debug",
+  n = { "<cmd>lua require('neotest').run.run()<cr>", "Test Nearest" },
+
+  -- m = { "<cmd>lua require('neotest').run.run()<cr>", "Test Method" },
+  -- M = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Test Method (debug)" },
+  -- f = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", "Test Class" },
+  -- F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Test Class (debug)" },
+  -- S = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
 }
 
 
 -- TREESITTER
+
+lvim.builtin.treesitter.auto_install = true
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.highlight.enabled = true
 
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
@@ -260,11 +221,6 @@ lvim.builtin.treesitter.ensure_installed = {
   "typescript",
   "yaml",
 }
-
-lvim.builtin.treesitter.ignore_install = { "haskell", "markdown" }
-lvim.builtin.treesitter.highlight.enable = true
-lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.auto_install = true
 
 lvim.builtin.treesitter.textobjects = {
   select = {
@@ -298,6 +254,15 @@ lvim.builtin.treesitter.textobjects = {
     },
   },
 }
+
+-- WHICHKEY
+
+local existingLspWhichKeys = lvim.builtin.which_key.mappings["l"]
+
+table.insert(existingLspWhichKeys, {
+  name = "Inlay Hints",
+  h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
+})
 
 -- TELESCOPE
 
@@ -355,11 +320,50 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.tar.gz",
 }
 
--- WHICHKEY
 
-local existingLspWhichKeys = lvim.builtin.which_key.mappings["l"]
+-- AUTO_COMMANDS
 
-table.insert(existingLspWhichKeys, {
-  name = "Inlay Hints",
-  h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  callback = function()
+    vim.cmd "set formatoptions-=cro"
+  end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  callback = function()
+    vim.cmd "tabdo wincmd ="
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
+  callback = function()
+    vim.cmd "quit"
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+  callback = function()
+    vim.highlight.on_yank { higroup = "Visual", timeout = 40 }
+  end,
+})
+
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   callback = function()
+--     vim.cmd "hi link illuminatedWord LspReferenceText"
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+--   pattern = { "*" },
+--   callback = function()
+--     vim.cmd "checktime"
+--   end,
+-- })
