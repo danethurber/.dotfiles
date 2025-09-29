@@ -34,11 +34,12 @@ log "Installing Packages..." $step_count
 PACKAGES=(
   awscli
   git
-  gnupg 
+  gnupg
   gnupg2
   jq
   neovim
   nvm
+  pyenv
   python
   starship
   tmux
@@ -99,16 +100,12 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 step_count=$[$step_count+1]
 log "Symlinking Config Files..." $step_count
 
-[[ ! -d ~/.config/lvim/config.lua ]] && ln -nfs ~/.dotfiles/lvim/config.lua ~/.config/lvim/config.lua
+[[ ! -d ~/.config/nvim ]] && ln -nfs ~/.dotfiles/nvim ~/.config/nvim
 [[ ! -d ~/.config/starship.toml ]] && ln -nfs ~/.dotfiles/starship.tom ~/.config/starship.toml
 [[ ! -d ~/.psqlrc ]] && ln -nfs ~/.dotfiles/.psqlrc ~/.psqlrc
 [[ ! -d ~/.editorconfig ]] && ln -nfs ~/.dotfiles/.editorconfig ~/.editorconfig
 [[ ! -d ~/.tmux.conf ]] && ln -nfs ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 [[ ! -d ~/.zshrc ]] && ln -nfs ~/.dotfiles/zsh/.zshrc ~/.zshrc
-# [[ ! -d ~/.vimrc ]] && ln -nfs ~/.dotfiles/vim/.vimrc ~/.vimrc
-
-# [[ ! -d ~/.config/nvim/init.lua ]] && ln -nfs ~/.dotfiles/neovim/init.lua ~/.config/nvim/init.lua
-# [[ ! -d ~/coc-settings.json ]] && ln -nfs ~/.dotfiles/coc-settings.json ~/coc-settings.json
 
 # ---
 step_count=$[$step_count+1]
@@ -122,13 +119,6 @@ if test ! $(which cargo); then
   curl https://sh.rustup.rs -sSf | sh
 
 fi
-# ---
-if test ! $(which lvim); then
-  step_count=$[$step_count+1]
-  log "Installing LunarVim" $step_count
-  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-fi
-
 
 # ---
 log "Bootstrapping Completed! \n" "!"
