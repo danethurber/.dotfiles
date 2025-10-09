@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:starship.rs)",
+      "Read(//Users/dane/Library/Fonts/**)",
+      "Bash(xattr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

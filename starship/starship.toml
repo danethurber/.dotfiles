@@ -1,8 +1,11 @@
 add_newline = false
-scan_timeout = 10
+# Reduce scan timeout for faster prompt rendering (default: 30ms)
+scan_timeout = 5
+# Limit command execution time (default: 500ms)
+command_timeout = 500
 format = """
 
-[┌](dimmed blue) $git_branch$nodejs$package$cmd_duration$aws
+[┌](dimmed blue) $git_branch$nodejs$python$package$cmd_duration$aws
 $character$directory$git_commit$git_state$git_status
 """
 
@@ -60,10 +63,11 @@ style = "dimmed blue"
 display_private = true
 format = "([|](dimmed blue) [$symbol$version]($style)) "
 style = "dimmed 208"
-symbol = " "
+symbol = "@"
 
 [python]
-format = "([|](dimmed blue) [$virtualenv]($style)) "
+format = "([|](dimmed blue) [venv:$virtualenv](yellow)) "
+detect_folders = [".venv"]
 
 [username]
 format = "[$user]($style)"
