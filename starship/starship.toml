@@ -1,76 +1,64 @@
-add_newline = false
-# Reduce scan timeout for faster prompt rendering (default: 30ms)
-scan_timeout = 5
-# Limit command execution time (default: 500ms)
-command_timeout = 500
 format = """
+$directory$git_branch$git_status$fill$cmd_duration$nodejs$python$docker_context$aws
+$character"""
 
-[┌](dimmed blue) $git_branch$nodejs$python$package$cmd_duration$aws
-$character$directory$git_commit$git_state$git_status
-"""
-
-[aws]
-format = '[($profile )(\($region\) )(\[$duration\] )]($style)'
-style = "bold yellow"
+[fill]
+symbol = " "
 
 [character]
-error_symbol = "[└─>](dimmed blue) [✗](dimmed red)"
-success_symbol = "[└─>](dimmed blue)"
-vicmd_symbol = "[└─<](dimmed blue)"
-
-[cmd_duration]
-format = "([|](dimmed blue) [task took $duration]($style)) "
-min_time = 2_000
-style = "dimmed yellow"
+success_symbol = "[❯](#a3be8c)"
+error_symbol = "[❯](#bf616a)"
 
 [directory]
-format = "([$read_only]($read_only_style) )[$path]($style) "
-read_only = ""
-style = "bold blue"
-
-[docker_context]
-symbol = " "
-
-[hostname]
-format = "[@$hostname]($style)"
-ssh_only = false
-style = "dimmed blue"
+style = "#88c0d0 bold"
+truncation_length = 3
+truncate_to_repo = true
 
 [git_branch]
-format = '([$symbol$branch]($style) )'
-symbol = " "
-style = "bold green"
+symbol = ""
+style = "#b48ead"
+format = " [\\[$branch\\]]($style)"
 
 [git_status]
-stashed = ""
-style = "bold red"
-
-[golang]
-symbol = " "
-
-[memory_usage]
-symbol = " "
-
-[nix_shell]
-symbol = " "
+format = '( [·](dimmed) $all_status$ahead_behind)'
+conflicted = "[!$count](#bf616a) "
+ahead = "[⇡$count](#88c0d0) "
+behind = "[⇣$count](#bf616a) "
+diverged = "[⇕](#bf616a) "
+staged = "[+$count](#a3be8c) "
+modified = "[!$count](#d08770) "
+deleted = "[−$count](#bf616a) "
+untracked = "[+$count](#ebcb8b) "
+renamed = "[→$count](#a3be8c) "
+stashed = "[⚑$count](#b48ead) "
 
 [nodejs]
-detect_files = [".nvmrc"]
-format = "([|](dimmed blue) [$symbol($version)]($style)) "
-style = "dimmed blue"
-
-[package]
-display_private = true
-format = "([|](dimmed blue) [$symbol$version]($style)) "
-style = "dimmed 208"
-symbol = "@"
+symbol = ""
+style = "#a3be8c"
+format = "[node](dimmed) [$version]($style) [·](dimmed) "
+detect_files = [".nvmrc", "package.json"]
 
 [python]
-format = "([|](dimmed blue) [venv:$virtualenv](yellow)) "
+symbol = ""
+style = "#ebcb8b"
+format = "[py](dimmed) [$version]($style)[ \\($virtualenv\\)](#88c0d0) [·](dimmed) "
 detect_folders = [".venv"]
 
-[username]
-format = "[$user]($style)"
-show_always = true
-style_root = "bold inverted blue"
-style_user = "bold dimmed blue"
+[docker_context]
+symbol = ""
+style = "#81a1c1"
+format = "[docker](dimmed) [$context]($style) [·](dimmed) "
+
+[aws]
+symbol = ""
+style = "#d08770"
+format = "[aws](dimmed) [$profile]($style)"
+force_display = false
+
+[package]
+disabled = true
+
+[cmd_duration]
+min_time = 2000
+style = "#ebcb8b"
+format = "[took](dimmed) [$duration]($style) [·](dimmed) "

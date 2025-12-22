@@ -4,9 +4,28 @@
       "WebSearch",
       "WebFetch(domain:starship.rs)",
       "Read(//Users/dane/Library/Fonts/**)",
-      "Bash(xattr:*)"
+      "Bash(xattr:*)",
+      "Bash(brew install:*)",
+      "Bash(ln:*)",
+      "Bash(zsh -i -c 'nvm --version && node --version')",
+      "Bash(zsh -i -c 'type nvm; nvm --version; node --version')",
+      "Bash(zsh:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(starship:*)",
+      "Bash(brew info:*)",
+      "Bash(brew bundle:*)",
+      "WebFetch(domain:docs.astral.sh)",
+      "WebFetch(domain:github.com)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true
   }
 }

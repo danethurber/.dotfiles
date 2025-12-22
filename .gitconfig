@@ -1,80 +1,70 @@
 [alias]
-    # View the SHA, description, and history graph of the latest 20 commits
-    l = log --pretty='format:%C(yellow)%h %Creset- %C(white)%s %C(bold blue)[%an]%Creset %Cgreen%cr' -n 20 --graph
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    # View the current working tree status using the short format
-    s = status -s
-    # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-    # List modified files in last commit
-    dl = "!git ll -1"
-    # Diff with patience
-    dip = diff --patience
-    # Pull in remote changes for the current repository and all its submodules
-    p = !"git pull; git submodule foreach git pull origin master"
-    # Clone a repository including all submodules
-    c = clone --recursive
-    # Commit all changes
-    ca = !git add -A && git commit -av
-    # Switch to and track remote branch
-    go = checkout --track
-    # Create named branches
+    # ===== Branching =====
+    branches = branch -a
+    bug = "!f() { git checkout -b bug/$1; }; f"
     feature = "!f() { git checkout -b feature/$1; }; f"
     refactor = "!f() { git checkout -b refactor/$1; }; f"
-    bug = "!f() { git checkout -b bug/$1; }; f"
-    # Show verbose output about tags, branches or remotes
-    tags = tag -l
-    branches = branch -a
+    sw = switch                                    # modern checkout for branches
+    swc = switch -c                                # create and switch to new branch
+
+    # ===== Branch Cleanup =====
+    # Delete merged branches (excludes main/master and current)
+    branch-cleanup = "!f(){ \
+      DEFAULT=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'); \
+      git branch --merged | grep -vE \"^\\*|${DEFAULT:-main}|master\" | xargs -r git branch -d; \
+    }; f"
+    # Force delete unmerged branches (CAUTION)
+    branch-cleanup-force = "!f(){ \
+      DEFAULT=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'); \
+      git branch | grep -vE \"^\\*|${DEFAULT:-main}|master\" | xargs -r git branch -D; \
+    }; f"
+    prune = fetch --prune                          # remove stale remote tracking branches
+
+    # ===== Committing =====
+    amend = commit --amend --no-edit               # add staged changes to last commit
+    ca = !git add -A && git commit -av             # stage all and commit
+    co = checkout
+    uncommit = reset --soft HEAD~1                 # undo last commit, keep changes staged
+
+    # ===== Diffing =====
+    d = diff
+    dc = diff --cached                             # diff staged changes
+    di = "!d() { git diff HEAD~${1:-1}; }; d"      # diff N commits back (default: 1)
+
+    # ===== History / Logging =====
+    l = log --pretty='format:%C(yellow)%h %Creset- %C(white)%s %C(bold blue)[%an]%Creset %Cgreen%cr' -n 20 --graph
+    ll = log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --decorate --numstat
+
+    # ===== Info =====
+    aliases = "!git config -l | grep alias | cut -c 7-"
     remotes = remote -v
-    # Credit an author on the latest commit
-    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
-    # Uncommit
-    uncommit = reset --soft HEAD~1
-    # Undo a `git push`
-    undopush = push -f origin HEAD^:master
-    # Search through codebase
-    grep = grep -Ii
-    # Search from root folder
-    gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
-    # Grep on filename
-    f = "!git ls-files | grep -i"
-    # reset to last commit on HEAD
-    stfu = reset --hard HEAD
-    # delete local branches if remote branch was deleted
-    prune = fetch --prune
-    # prune tracked branches on origin
-    prn = remote prune origin
-    # help with merging
+    tags = tag -l
+
+    # ===== Merging =====
     ours = "!f() { git checkout --ours $@ && git add $@; }; f"
     theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-    # temporarily ignore files
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
+
+    # ===== Pulling / Syncing =====
+    p = pull
+    pf = pull --ff-only                            # fast-forward only (safe)
+
+    # ===== Rebasing =====
+    reb = "!r() { git rebase -i HEAD~$1; }; r"     # interactive rebase last N commits
+
+    # ===== Resetting (DANGER ZONE) =====
+    stfu = reset --hard HEAD                       # discard ALL uncommitted changes
+
+    # ===== Stashing =====
+    snapshot = !git stash push -m \"snapshot: $(date)\" && git stash apply stash@{0}
+    stash-unstaged = stash push --keep-index       # stash only unstaged changes
+
+    # ===== Status =====
+    s = status -s                                  # short status
+
+    # ===== Tracking =====
+    assume = update-index --assume-unchanged       # ignore local changes to tracked file
     assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-    # stash a snapshot
-    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-    # stash includes untracked files
-    stash-all = stash save --include-untracked
-    stash-unstaged = stash -k
-    # Delete all local branches but master and the current one, only if they are fully merged with master.
-    branch-cleanup = "!f(){\
-      git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
-    }; f"
-    # Delete all local branches but master and the current one.
-    branch-cleanup-force = "!f(){\
-      git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
-    }; f"
-
-    # list aliases
-    aliases = "!git config -l | grep alias | cut -c 7-"
-    shortcuts = "!git aliases"
-
-    # commitizen
-    cz = "npx git-cz"
+    unassume = update-index --no-assume-unchanged
 
 [color]
     ui = auto
@@ -106,6 +96,21 @@
 [difftool]
     prompt = false
 
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = false
+    syntax-theme = Nord
+
+[interactive]
+    diffFilter = delta --color-only
+
 [merge]
     log = true
     tool = diffconflicts
@@ -114,7 +119,7 @@
 	keepBackup = false
 
 [mergetool "diffconflicts"]
-	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = true
 
 [push]
@@ -137,8 +142,3 @@
 
 [web]
     browser = google-chrome
-
-[merge "npm-merge-driver"]
-    name = automatically merge npm lockfiles
-    driver = npx npm-merge-driver merge %A %O %B %P
-

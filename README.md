@@ -1,33 +1,69 @@
-## Installation Guide
+# Dotfiles
 
-clone the repo
+Minimal, modern dotfiles for macOS.
 
-```
-cd ~/
+## Quick Start
+
+```bash
+cd ~
 git clone git@github.com:danethurber/.dotfiles.git
-```
-
-run the bootstrap command
-
-```
+cd .dotfiles
 ./bootstrap.sh
 ```
 
-## Neovim (LazyVim)
+## What's Included
 
-LazyVim will auto-bootstrap on first launch. Custom plugins are in `nvim/lua/plugins/`:
+| Component | Description |
+|-----------|-------------|
+| **Zsh + Antidote** | Fast shell with lazy-loaded plugins (aws, git, docker, nvm) |
+| **Starship** | Two-line prompt with git, node, python, docker, aws (plain text symbols) |
+| **LazyVim** | Modern Neovim config with LSP, formatting, linting |
+| **Git** | Aliases, GPG signing, custom merge tools |
+| **MCP configs** | Claude Desktop and Cursor MCP server templates |
+
+## Structure
+
+```
+.dotfiles/
+├── Brewfile              # Homebrew packages
+├── bootstrap.sh          # Setup script
+├── zsh/
+│   ├── .zshrc            # Shell config (Antidote-based)
+│   └── .zsh_plugins.txt  # Plugin list
+├── starship/
+│   └── starship.toml     # Prompt config (two-line, plain text symbols)
+├── nvim/                 # LazyVim config
+├── mcp/                  # MCP server configs
+├── iterm/
+│   └── Nord.itermcolors  # iTerm2 color theme
+├── .gitconfig            # Git aliases and settings
+├── .editorconfig         # Editor formatting
+└── .claude/              # Claude Code settings
+```
+
+## Secrets
+
+Create `~/.env` for secrets (not committed):
+
+```bash
+export MATTERBEAM_API_TOKEN="xxx"
+export MATTERBEAM_CUSTOMER_KEY="xxx"
+```
+
+This is sourced by `.zshrc` and used by `bootstrap.sh` to populate MCP templates.
+
+## Post-Install
+
+1. **iTerm2**: Import `iterm/Nord.itermcolors` color scheme
+2. **Neovim**: Run `nvim` - LazyVim auto-bootstraps on first launch
+3. **Claude Code plugins**: Run `/plugin install` for each in `enabledPlugins`
+
+## LazyVim Plugins
+
+Custom plugins in `nvim/lua/plugins/`:
 - **claude.lua** - Claude Code integration
 - **python.lua** - Python LSP, DAP, venv management
 - **formatting.lua** - black, isort, prettier
 - **linting.lua** - flake8
 - **telescope.lua** - file search exclusions
 - **editor.lua** - EditorConfig support
-
-## tmux
-
-- load up tmux and install plugins with prefix+I
-
-## iTerm2
-
-- config iterm to use the color profile found in this repo
-

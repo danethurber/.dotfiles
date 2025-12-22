@@ -19,12 +19,13 @@ return {
             python = {
               analysis = {
                 autoImportCompletions = true,
-                autoImportFormat = "relative", -- Enforce relative imports
+                autoImportFormat = "relative",
                 typeCheckingMode = "basic",
               },
             },
           },
         },
+        ruff = {}, -- Ruff for linting (10-100x faster than flake8)
       },
     },
   },

@@ -1,80 +1,86 @@
-alias l="ls -l ${colorflag}"
-alias la="ls -la ${colorflag}"
-alias whois="whois -h whois-servers.net"
+# ~/.zshrc - Minimal zsh config with Antidote
 
-# alias yarn-linked="find . -type l | grep -v .bin | sed 's/^\.\/node_modules\///'"
-# alias yarn-unlink-all="yarn-linked | xargs yarn unlink && yarn install --check-files"
-
-alias :q="exit"
+# ----- Environment -----
 export TERM=xterm-256color
+export EDITOR=nvim
+export VISUAL=nvim
+export VIRTUAL_ENV_DISABLE_PROMPT=1  # Let starship handle venv display
+export PNPM_HOME="$HOME/Library/pnpm"
 
-export NVM_AUTO_USE=true
-export NVM_DIR="$HOME/.nvm"
-export NVM_LAZY_LOAD=true
+# PATH
+export PATH="./node_modules/.bin:$HOME/.local/bin:$HOME/.npm-global/bin:/opt/homebrew/opt/libpq/bin:$PNPM_HOME:$PATH"
 
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_TMUX_AUTOQUIT=false
-export ZSH_TMUX_AUTOSTART=false
-
+# GPG (agent started via launchd or on-demand)
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-# Launch GPG agent asynchronously to avoid blocking startup
-(gpgconf --launch gpg-agent && gpg-connect-agent /bye) &>/dev/null &!
+# ----- Secrets -----
+[ -f ~/.env ] && source ~/.env
 
-# Consolidate all PATH additions
-export PATH="$PYENV_ROOT/bin:./node_modules/.bin:$HOME/.local/bin:$HOME/.npm-global/bin:/opt/homebrew/opt/libpq/bin:$PNPM_HOME:$PATH"
+# ----- Antidote -----
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load ~/.dotfiles/zsh/.zsh_plugins.txt
 
-[ -f ~/.dotfiles/aliases/aws ] && source ~/.dotfiles/aliases/aws
-[ -f ~/.secrets ] && source ~/.secrets
+# ----- fnm (Fast Node Manager) -----
+eval "$(fnm env --use-on-cd)"
 
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
+# ----- Modern CLI tools -----
+eval "$(zoxide init zsh)"              # smarter cd (use 'z' command)
+eval "$(fzf --zsh)"                    # fuzzy finder keybindings
 
-# Enable lazy loading for NVM (loads only when needed)
-zstyle ':omz:plugins:nvm' lazy yes
+# ----- Python venv auto-activate -----
+# Find nearest .venv up the directory tree and activate with project name
+auto_activate_venv() {
+  local dir="$PWD"
+  local venv_dir=""
+  local project_name=""
 
-plugins=(
-  aws
-  docker
-  git
-  zsh-nvm
+  # Search up for .venv
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.venv" ]]; then
+      venv_dir="$dir/.venv"
+      project_name="${dir:t}"
+      break
+    fi
+    dir="${dir:h}"
+  done
 
-  # colored-man-pages
-  # dotenv
-  # kubectl
-  # npm
-  # tmux
-  # yarn
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# source ~/.bash_profile
-
-# NVM is now lazy loaded via zsh-nvm plugin above, so these lines are not needed
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-
-# Lazy load pyenv - only initialize when python/pip commands are used
-export PYENV_ROOT="$HOME/.pyenv"
-export PNPM_HOME="/Users/dane/Library/pnpm"
-
-pyenv() {
-  unset -f pyenv
-  eval "$(command pyenv init -)"
-  pyenv "$@"
+  if [[ -n "$venv_dir" ]]; then
+    if [[ "$VIRTUAL_ENV" != "$venv_dir" ]]; then
+      [[ -n "$VIRTUAL_ENV" ]] && deactivate
+      source "$venv_dir/bin/activate"
+      # Override VIRTUAL_ENV to show project name in starship
+      export VIRTUAL_ENV="${venv_dir:h}/$project_name"
+    fi
+  elif [[ -n "$VIRTUAL_ENV" ]]; then
+    deactivate
+  fi
 }
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd auto_activate_venv
+auto_activate_venv  # run on shell start
 
-# Neovim as default editor
-export EDITOR=nvim
-export VISUAL=nvim
+# ----- Aliases -----
 
-# Neovim aliases
-alias vim=nvim
+# Editors
 alias vi=nvim
+alias vim=nvim
 
-# Use custom Starship configuration
+# File listing (eza = modern ls replacement)
+alias l="eza -l"                       # long format
+alias la="eza -la"                     # long format + hidden
+alias ls="eza"
+alias tree="eza --tree"
+
+# File viewing (bat = cat with syntax highlighting)
+alias cat="bat --paging=never"
+
+# Git
+alias lg="lazygit"                     # git TUI
+
+# Shell maintenance
+alias antidote-update='antidote bundle < ~/.dotfiles/zsh/.zsh_plugins.txt > ~/.dotfiles/zsh/.zsh_plugins.zsh && source ~/.zshrc'
+
+# ----- Starship prompt -----
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
