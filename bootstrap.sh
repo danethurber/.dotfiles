@@ -20,6 +20,8 @@ mkdir -p ~/.config ~/Projects
 
 # Create symlinks
 echo "==> Creating symlinks..."
+mkdir -p ~/Library/LaunchAgents
+ln -sfn ~/.dotfiles/launchd/org.gnupg.gpg-agent.plist ~/Library/LaunchAgents/org.gnupg.gpg-agent.plist
 ln -sfn ~/.dotfiles/nvim ~/.config/nvim
 ln -sfn ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -sfn ~/.dotfiles/.gitconfig ~/.gitconfig.local
