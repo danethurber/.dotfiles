@@ -4,6 +4,8 @@
 export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
+bindkey -e
+unset GIT_EDITOR  # Prevent Cursor's remote-containers extension from overriding
 export VIRTUAL_ENV_DISABLE_PROMPT=1  # Let starship handle venv display
 export PNPM_HOME="$HOME/Library/pnpm"
 

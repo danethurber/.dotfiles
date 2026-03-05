@@ -43,3 +43,7 @@ When stopping: state what's done, what's blocked, open questions, files touched.
 
 When confused: stop, think, present theories, get signoff. Never silently retry failures.
 
+## Git Commits
+
+Never add Claude attribution, emoji, or "Generated with Claude" footers to commits. Just write a clean commit message.
+

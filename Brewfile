@@ -11,6 +11,7 @@ brew "git-delta"     # Better git diffs
 brew "lazygit"       # Git TUI
 brew "ripgrep"       # Fast grep
 brew "fd"            # Fast find
+brew "just"          # Command runner
 
 brew "fnm"           # Node Manager
 brew "uv"            # Python package/project manager

@@ -5,3 +5,7 @@
 
 # Antidote generated static plugin file
 zsh/.zsh_plugins.zsh
+
+# Local settings (machine-specific)
+.claude/settings.local.json
+claude/settings.json
