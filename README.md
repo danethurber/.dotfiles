@@ -20,6 +20,7 @@ cd .dotfiles
 | **LazyVim** | Modern Neovim config with LSP, formatting, linting |
 | **Git** | Aliases, GPG signing, custom merge tools |
 | **MCP configs** | Claude Desktop and Cursor MCP server templates |
+| **ccstatusline** | Claude Code statusline with model, context, git, usage widgets |
 
 ## Structure
 
@@ -38,7 +39,9 @@ cd .dotfiles
 │   └── Nord.itermcolors  # iTerm2 color theme
 ├── .gitconfig            # Git aliases and settings
 ├── .editorconfig         # Editor formatting
-└── .claude/              # Claude Code settings
+├── .claude/              # Claude Code settings
+└── ccstatusline/
+    └── settings.json     # ccstatusline config (symlinked to ~/.config/ccstatusline/)
 ```
 
 ## Secrets
