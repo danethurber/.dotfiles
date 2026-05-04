@@ -12,9 +12,8 @@ export PNPM_HOME="$HOME/Library/pnpm"
 # PATH
 export PATH="./node_modules/.bin:$HOME/.local/bin:$HOME/.npm-global/bin:/opt/homebrew/opt/libpq/bin:$PNPM_HOME:$PATH"
 
-# GPG (agent started via launchd or on-demand)
-export GPG_TTY=$(tty)
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# 1Password SSH agent (used for GitHub auth + git commit signing)
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 # ----- Secrets -----
 [ -f ~/.env ] && source ~/.env
@@ -52,7 +51,7 @@ auto_activate_venv() {
       [[ -n "$VIRTUAL_ENV" ]] && deactivate
       source "$venv_dir/bin/activate"
       # Override VIRTUAL_ENV to show project name in starship
-      export VIRTUAL_ENV="${venv_dir:h}/$project_name"
+      # export VIRTUAL_ENV="${venv_dir:h}/$project_name"
     fi
   elif [[ -n "$VIRTUAL_ENV" ]]; then
     deactivate
@@ -86,3 +85,6 @@ alias antidote-update='antidote bundle < ~/.dotfiles/zsh/.zsh_plugins.txt > ~/.d
 # ----- Starship prompt -----
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
+
+# opencode
+export PATH=/Users/dane/.opencode/bin:$PATH
