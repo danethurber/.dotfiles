@@ -10,10 +10,9 @@ return {
         yaml = { "prettier" },
         toml = { "taplo" },
       },
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
+      -- Note: format-on-save is driven by LazyVim's autoformat
+      -- (toggle with <leader>uf / <leader>uF). Setting format_on_save here
+      -- would bypass that toggle.
     },
   },
 }
