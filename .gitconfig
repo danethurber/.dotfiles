@@ -87,8 +87,18 @@
     untracked = cyan
 
 [commit]
-    # Verify commits using gpg key
+    # Sign commits using the 1Password SSH key (see [gpg] below).
     gpgSign = true
+
+[gpg]
+    # SSH signing via 1Password (replaces GPG/YubiKey). The signing public key
+    # (user.signingkey) is set per-machine — see SETUP.md.
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    # Lets `git log --show-signature` verify your own commits locally.
+    allowedSignersFile = ~/.config/git/allowed_signers
 
 [diff]
     tool = vimdiff
