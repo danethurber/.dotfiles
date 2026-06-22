@@ -1,0 +1,26 @@
+# Ghostty config — symlinked to ~/.config/ghostty/config
+# Reload in-app with cmd+shift+, ; list all options with `ghostty +show-config --default --docs`
+
+# Appearance
+theme = nord
+font-family = Hack Nerd Font
+font-size = 14
+background-opacity = 0.96
+cursor-style = bar
+window-padding-x = 6
+window-padding-y = 6
+
+# macOS behavior
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+
+# Shell
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# Keybindings (defaults are sensible; these are explicit for muscle memory)
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+enter=toggle_fullscreen

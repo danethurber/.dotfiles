@@ -1,0 +1,31 @@
+# VSCode extensions — installed by bootstrap.sh via `code --install-extension`.
+# One extension id per line. Lines starting with # are ignored.
+
+# --- Editing / vim ---
+vscodevim.vim
+
+# --- Web: TypeScript / JS / Vue / React ---
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+Vue.volar
+
+# --- Python (Astral toolchain) ---
+ms-python.python
+ms-python.vscode-pylance
+charliermarsh.ruff
+
+# --- Go ---
+golang.go
+
+# --- Config / data formats ---
+tamasfe.even-better-toml
+redhat.vscode-yaml
+
+# --- Git ---
+eamodio.gitlens
+
+# --- Theme ---
+arcticicestudio.nord-visual-studio-code
+
+# --- Claude Code ---
+anthropic.claude-code

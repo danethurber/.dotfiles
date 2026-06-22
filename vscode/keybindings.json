@@ -1,0 +1,17 @@
+// VSCode keybindings — symlinked to
+//   ~/Library/Application Support/Code/User/keybindings.json
+[
+  // Quick file / symbol navigation (muscle memory parity with terminal fzf)
+  { "key": "cmd+p", "command": "workbench.action.quickOpen" },
+  { "key": "cmd+shift+p", "command": "workbench.action.showCommands" },
+
+  // Toggle integrated terminal with the same chord as most setups
+  { "key": "ctrl+`", "command": "workbench.action.terminal.toggleTerminal" },
+
+  // Move lines (Option+Up/Down) — explicit for consistency
+  { "key": "alt+up", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && !editorReadonly" },
+  { "key": "alt+down", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && !editorReadonly" },
+
+  // Format document
+  { "key": "cmd+shift+i", "command": "editor.action.formatDocument", "when": "editorHasDocumentFormattingProvider && editorTextFocus" }
+]
