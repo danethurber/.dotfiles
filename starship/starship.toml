@@ -41,7 +41,7 @@ detect_files = [".nvmrc", "package.json"]
 [python]
 symbol = ""
 style = "#ebcb8b"
-format = "[py](dimmed) [$version]($style)[ \\($virtualenv\\)](#88c0d0) [·](dimmed) "
+format = "[py](dimmed) [$version]($style)( [\\($virtualenv\\)](#88c0d0)) [·](dimmed) "
 detect_folders = [".venv"]
 
 [docker_context]

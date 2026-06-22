@@ -12,6 +12,15 @@ export PNPM_HOME="$HOME/Library/pnpm"
 # PATH
 export PATH="./node_modules/.bin:$HOME/.local/bin:$HOME/.npm-global/bin:/opt/homebrew/opt/libpq/bin:$PNPM_HOME:$PATH"
 
+# Clear stale VIRTUAL_ENV inherited from a parent process (e.g. an editor
+# launched from a shell with a since-deleted venv active). If the venv
+# directory is gone, the env var and its bin/ entry on PATH are lies.
+if [[ -n "$VIRTUAL_ENV" && ! -d "$VIRTUAL_ENV" ]]; then
+  PATH="${PATH//${VIRTUAL_ENV}\/bin:/}"
+  PATH="${PATH//:${VIRTUAL_ENV}\/bin/}"
+  unset VIRTUAL_ENV VIRTUAL_ENV_PROMPT
+fi
+
 # 1Password SSH agent (used for GitHub auth + git commit signing)
 export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
@@ -22,44 +31,15 @@ export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load ~/.dotfiles/zsh/.zsh_plugins.txt
 
-# ----- fnm (Fast Node Manager) -----
-eval "$(fnm env --use-on-cd)"
-
 # ----- Modern CLI tools -----
 eval "$(zoxide init zsh)"              # smarter cd (use 'z' command)
 eval "$(fzf --zsh)"                    # fuzzy finder keybindings
 
-# ----- Python venv auto-activate -----
-# Find nearest .venv up the directory tree and activate with project name
-auto_activate_venv() {
-  local dir="$PWD"
-  local venv_dir=""
-  local project_name=""
-
-  # Search up for .venv
-  while [[ "$dir" != "/" ]]; do
-    if [[ -d "$dir/.venv" ]]; then
-      venv_dir="$dir/.venv"
-      project_name="${dir:t}"
-      break
-    fi
-    dir="${dir:h}"
-  done
-
-  if [[ -n "$venv_dir" ]]; then
-    if [[ "$VIRTUAL_ENV" != "$venv_dir" ]]; then
-      [[ -n "$VIRTUAL_ENV" ]] && deactivate
-      source "$venv_dir/bin/activate"
-      # Override VIRTUAL_ENV to show project name in starship
-      # export VIRTUAL_ENV="${venv_dir:h}/$project_name"
-    fi
-  elif [[ -n "$VIRTUAL_ENV" ]]; then
-    deactivate
-  fi
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook chpwd auto_activate_venv
-auto_activate_venv  # run on shell start
+# ----- mise (tool version manager + uv venv auto-activate) -----
+# Owns Node (.nvmrc), Go, and Python — cwd-aware PATH for all managed tools —
+# and sources uv-created .venv directories automatically
+# (python.uv_venv_auto=source in mise config).
+eval "$(mise activate zsh)"
 
 # ----- Aliases -----
 
