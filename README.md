@@ -1,72 +1,83 @@
 # Dotfiles
 
-Minimal, modern dotfiles for macOS.
+Minimal, modern dotfiles for macOS development (Python, Go, TypeScript/Node).
 
 ## Quick Start
 
 ```bash
-cd ~
-git clone git@github.com:danethurber/.dotfiles.git
-cd .dotfiles
-./bootstrap.sh
+xcode-select --install
+git clone git@github.com:danethurber/.dotfiles.git ~/.dotfiles
+~/.dotfiles/bootstrap.sh
 ```
+
+`bootstrap.sh` is idempotent (safe to re-run). For the manual steps it can't script
+(1Password signing, `gh auth`, macOS permissions), follow **[SETUP.md](SETUP.md)**.
 
 ## What's Included
 
 | Component | Description |
 |-----------|-------------|
-| **Zsh + Antidote** | Fast shell with lazy-loaded plugins (aws, git, docker, nvm) |
-| **Starship** | Two-line prompt with git, node, python, docker, aws (plain text symbols) |
-| **LazyVim** | Modern Neovim config with LSP, formatting, linting |
-| **Git** | Aliases, GPG signing, custom merge tools |
-| **MCP configs** | Claude Desktop and Cursor MCP server templates |
-| **ccstatusline** | Claude Code statusline with model, context, git, usage widgets |
+| **Ghostty** | GPU terminal, Nord theme, Hack Nerd Font (daily driver) |
+| **Zsh + Antidote** | Fast shell with static plugin bundle (aws, git, docker, completions) |
+| **Starship** | Two-line prompt (git, node, python, docker, aws) |
+| **LazyVim** | Neovim with LSP/format/lint for Python, Go, TS/Vue/React, JSON, TOML, Markdown |
+| **VSCode** | Settings, keybindings, and extension list tracked in-repo |
+| **Version mgmt** | `mise` (Node, Go, Python interpreters) · `uv` (Python venvs) |
+| **Git** | Rich aliases, delta diffs, SSH commit signing via 1Password |
+| **Claude Code** | Global CLAUDE.md protocol, plugins, ccstatusline, per-stack project templates |
+
+## Version management
+
+Two tools, clear division of labor:
+
+- **mise** owns **Node, Go, and Python interpreters** (`mise/config.toml`; reads `.nvmrc`
+  and `.python-version`).
+- **uv** owns **Python project venvs** (`.venv`, auto-sourced via mise's `uv_venv_auto`).
 
 ## Structure
 
 ```
 .dotfiles/
-├── Brewfile              # Homebrew packages
-├── bootstrap.sh          # Setup script
-├── zsh/
-│   ├── .zshrc            # Shell config (Antidote-based)
-│   └── .zsh_plugins.txt  # Plugin list
-├── starship/
-│   └── starship.toml     # Prompt config (two-line, plain text symbols)
+├── Brewfile              # Homebrew packages (CLIs, Ghostty, VSCode, fonts)
+├── bootstrap.sh          # One-command provisioning (idempotent)
+├── SETUP.md              # Manual checklist (1Password, gh, permissions)
+├── macos.sh              # Optional macOS `defaults` tweaks
+├── zsh/                  # Shell config (Antidote-based)
+├── starship/             # Prompt config
 ├── nvim/                 # LazyVim config
-├── mcp/                  # MCP server configs
-├── iterm/
-│   └── Nord.itermcolors  # iTerm2 color theme
-├── .gitconfig            # Git aliases and settings
-├── .editorconfig         # Editor formatting
-├── .claude/              # Claude Code settings
-└── ccstatusline/
-    └── settings.json     # ccstatusline config (symlinked to ~/.config/ccstatusline/)
+├── ghostty/config        # Terminal config
+├── mise/config.toml      # Node + Go + Python runtime management
+├── vscode/               # settings.json, keybindings.json, extensions.txt
+├── claude/               # CLAUDE.md protocol, settings, templates/
+├── ccstatusline/         # Claude Code statusline config
+├── .gitconfig            # Git aliases + SSH signing
+└── .editorconfig         # Editor formatting
 ```
 
 ## Secrets
 
-Create `~/.env` for secrets (not committed):
+Create `~/.env` for secrets (not committed); sourced by `.zshrc`:
 
 ```bash
-export MATTERBEAM_API_TOKEN="xxx"
-export MATTERBEAM_CUSTOMER_KEY="xxx"
+export SOME_API_TOKEN="xxx"
 ```
 
-This is sourced by `.zshrc` and used by `bootstrap.sh` to populate MCP templates.
+## Claude Code
 
-## Post-Install
+- Global protocol: `claude/CLAUDE.md` → symlinked to `~/.claude/CLAUDE.md`.
+- Project starter: `claude/templates/project-CLAUDE.md` (Python/Go/Node sections) — copy
+  into a new repo as its `CLAUDE.md` and keep the stack section you need.
+- Plugins: run `/plugin install` for each in `claude/settings.json` `enabledPlugins`.
 
-1. **iTerm2**: Import `iterm/Nord.itermcolors` color scheme
-2. **Neovim**: Run `nvim` - LazyVim auto-bootstraps on first launch
-3. **Claude Code plugins**: Run `/plugin install` for each in `enabledPlugins`
-
-## LazyVim Plugins
+## Neovim plugins
 
 Custom plugins in `nvim/lua/plugins/`:
-- **claude.lua** - Claude Code integration
-- **python.lua** - Python LSP, DAP, venv management
-- **formatting.lua** - black, isort, prettier
-- **linting.lua** - flake8
-- **telescope.lua** - file search exclusions
-- **editor.lua** - EditorConfig support
+- **claude.lua** — Claude Code integration
+- **python.lua** — Python LSP/DAP, uv commands, venv management
+- **formatting.lua** — conform.nvim overrides (ruff for Python, taplo for TOML); Go (gofumpt)
+  and web filetypes (prettier) come from LazyVim extras
+- **picker.lua** — snacks.picker file/grep exclusions
+
+Language support (gopls, vtsls, Volar, ESLint, Prettier, etc.) comes from LazyVim extras
+declared in `nvim/lazyvim.json`. `bootstrap.sh` syncs the plugins headlessly; the LSP/
+formatter **binaries install via Mason the first time you open a file of that type**.

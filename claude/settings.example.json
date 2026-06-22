@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {},
+  "permissions": {
+    "allow": [
+      "Bash(PORT=:*)",
+      "Bash(chmod:*)",
+      "Bash(curl:*)",
+      "Bash(deadcode:*)",
+      "Bash(docker:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(git:*)",
+      "Bash(go:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(lsof:*)",
+      "Bash(make:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pkill:*)",
+      "Bash(pnpm:*)",
+      "Bash(poetry:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(source:*)",
+      "Bash(sqlite3:*)",
+      "Bash(tail:*)",
+      "Bash(touch:*)",
+      "Bash(uv:*)",
+      "Update(*)",
+      "Update(*:*)",
+      "Write(*)"
+    ],
+    "deny": []
+  },
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "security-guidance@claude-code-plugins": true,
+    "code-review@claude-code-plugins": true,
+    "commit-commands@claude-code-plugins": true,
+    "feature-dev@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": true
+}
