@@ -1,7 +1,6 @@
 # ~/.zshrc - Minimal zsh config with Antidote
 
 # ----- Environment -----
-export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 bindkey -e
@@ -65,6 +64,3 @@ alias antidote-update='antidote bundle < ~/.dotfiles/zsh/.zsh_plugins.txt > ~/.d
 # ----- Starship prompt -----
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"
-
-# opencode
-export PATH=/Users/dane/.opencode/bin:$PATH
