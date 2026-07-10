@@ -61,6 +61,12 @@ alias lg="lazygit"                     # git TUI
 # Shell maintenance
 alias antidote-update='antidote bundle < ~/.dotfiles/zsh/.zsh_plugins.txt > ~/.dotfiles/zsh/.zsh_plugins.zsh && source ~/.zshrc'
 
+# Claude Code local OTel monitoring (Grafana LGTM via Podman) — see SETUP.md
+# Grafana on 43000 (not 3000, avoids the usual dev-server collisions), fronted
+# by caddy at http://ccdash.lvh.me:8080 (see caddy/Caddyfile).
+alias ccdash-start='(podman start otel-lgtm 2>/dev/null || podman run -d --name otel-lgtm --restart=always -p 43000:3000 -p 4317:4317 -p 4318:4318 -v otel-lgtm-data:/data grafana/otel-lgtm) && echo "Grafana: http://ccdash.lvh.me:8080"'
+alias ccdash-stop='podman stop otel-lgtm'
+
 # ----- Starship prompt -----
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml
 eval "$(starship init zsh)"

@@ -40,6 +40,11 @@ ln -sfn "$DOTFILES/claude/CLAUDE.md"      ~/.claude/CLAUDE.md
 ln -sfn "$DOTFILES/claude/settings.json"  ~/.claude/settings.json
 ln -sfn "$DOTFILES/vscode/settings.json"     "$VSCODE_USER/settings.json"
 ln -sfn "$DOTFILES/vscode/keybindings.json"  "$VSCODE_USER/keybindings.json"
+ln -sfn "$DOTFILES/caddy/Caddyfile"        "$(brew --prefix)/etc/Caddyfile"
+
+# ----- Caddy (local *.lvh.me reverse proxy) -----
+echo "==> Starting caddy (background service, auto-starts at login)..."
+brew services start caddy >/dev/null 2>&1 || brew services restart caddy
 
 # ----- Git config -----
 echo "==> Configuring git..."

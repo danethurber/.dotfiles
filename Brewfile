@@ -26,6 +26,7 @@ brew "delve"         # Go debugger (dlv)
 
 brew "awscli"
 brew "gh"            # GitHub CLI (PRs, auth, releases)
+brew "caddy"         # Reverse proxy for local *.lvh.me vanity URLs — see caddy/Caddyfile
 
 brew "antidote"
 

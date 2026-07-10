@@ -1,0 +1,8 @@
+# Local dev vanity URLs: http://<name>.lvh.me:8080
+# lvh.me and *.lvh.me are a public wildcard DNS record that resolves to
+# 127.0.0.1 — no /etc/hosts edits needed. Port 8080 (not 80) so `brew services
+# start caddy` never needs root. Add one block per local service.
+
+http://ccdash.lvh.me:8080 {
+	reverse_proxy localhost:43000
+}
