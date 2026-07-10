@@ -53,7 +53,7 @@ format = "[docker](dimmed) [$context]($style) [·](dimmed) "
 symbol = ""
 style = "#d08770"
 format = "[aws](dimmed) [$profile]($style)"
-force_display = false
+force_display = true
 
 [package]
 disabled = true

@@ -39,6 +39,7 @@ brew "tlrc"          # tldr client (concise man pages)
 # Apps
 cask "ghostty"                 # GPU terminal (daily driver)
 cask "visual-studio-code"      # Primary editor
+cask "raycast"                 # Launcher + window management
 
 # Fonts
 cask "font-hack-nerd-font"

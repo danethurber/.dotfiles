@@ -10,6 +10,10 @@
     "OTEL_METRIC_EXPORT_INTERVAL": "10000",
     "OTEL_LOGS_EXPORT_INTERVAL": "5000"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest"
+  },
   "permissions": {
     "allow": [
       "Bash(PORT=:*)",

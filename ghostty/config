@@ -4,7 +4,7 @@
 # Appearance
 theme = nord
 font-family = Hack Nerd Font Mono
-font-size = 14
+font-size = 12
 background-opacity = 0.96
 cursor-style = bar
 window-padding-x = 6

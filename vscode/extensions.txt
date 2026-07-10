@@ -21,9 +21,6 @@ golang.go
 tamasfe.even-better-toml
 redhat.vscode-yaml
 
-# --- Git ---
-eamodio.gitlens
-
 # --- Theme ---
 arcticicestudio.nord-visual-studio-code
 
