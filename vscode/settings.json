@@ -33,6 +33,9 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.decorations.enabled": true,
+  "explorer.decorations.badges": true,
+  "explorer.decorations.colors": true,
   "diffEditor.ignoreTrimWhitespace": false,
 
   // ----- Web (TypeScript / JS / Vue / React): Prettier + ESLint -----
