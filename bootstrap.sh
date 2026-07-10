@@ -26,7 +26,13 @@ mkdir -p ~/Projects ~/.claude "$VSCODE_USER"
 
 # ----- Symlinks -----
 echo "==> Creating symlinks..."
-ln -sfn "$DOTFILES/zsh/.zshrc"            ~/.zshrc
+# ~/.zshrc is a plain file (NOT a symlink) that just sources the tracked config.
+# Some tools (e.g. corporate endpoint-security agents) like to append directly
+# to ~/.zshrc; a thin wrapper means their edits land here, never in the repo.
+cat > ~/.zshrc <<'EOF'
+# Do not edit directly — this just sources the tracked config.
+source ~/.dotfiles/zsh/.zshrc
+EOF
 ln -sfn "$DOTFILES/nvim"                  ~/.config/nvim
 ln -sfn "$DOTFILES/mise/config.toml"      ~/.config/mise/config.toml
 ln -sfn "$DOTFILES/ghostty/config"        ~/.config/ghostty/config
