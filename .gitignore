@@ -2,6 +2,7 @@
 .vscode
 .vim
 .projections.json
+.scratch
 
 # Antidote generated static plugin file
 zsh/.zsh_plugins.zsh
