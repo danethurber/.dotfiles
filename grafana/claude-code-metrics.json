@@ -137,7 +137,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_commit_count_total[$__range]))",
+          "expr": "sum(increase(claude_code_commit_count_total[$__range]))",
           "refId": "A"
         }
       ],
@@ -198,7 +198,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_lines_of_code_count_total[$__range]))",
+          "expr": "sum(increase(claude_code_lines_of_code_count_total[$__range]))",
           "legendFormat": "Lines Accepted",
           "refId": "A"
         }
@@ -269,7 +269,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_cost_usage_USD_total[$__range]))",
+          "expr": "sum(increase(claude_code_cost_usage_USD_total[$__range]))",
           "refId": "A"
         }
       ],
@@ -330,7 +330,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_active_time_seconds_total{type=\"user\"}[$__range]))",
+          "expr": "sum(increase(claude_code_active_time_seconds_total{type=\"user\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -391,7 +391,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_active_time_seconds_total{type=\"cli\"}[$__range]))",
+          "expr": "sum(increase(claude_code_active_time_seconds_total{type=\"cli\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -452,7 +452,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"input\"}[$__range]))",
+          "expr": "sum(increase(claude_code_token_usage_tokens_total{type=\"input\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -513,7 +513,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"output\"}[$__range]))",
+          "expr": "sum(increase(claude_code_token_usage_tokens_total{type=\"output\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -574,7 +574,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range]))",
+          "expr": "sum(increase(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -635,7 +635,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"cacheCreation\"}[$__range]))",
+          "expr": "sum(increase(claude_code_token_usage_tokens_total{type=\"cacheCreation\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -703,7 +703,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range])) / (sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range])) + sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"input\"}[$__range]))) * 100",
+          "expr": "sum(increase(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range])) / (sum(increase(claude_code_token_usage_tokens_total{type=\"cacheRead\"}[$__range])) + sum(increase(claude_code_token_usage_tokens_total{type=\"input\"}[$__range]))) * 100",
           "refId": "A"
         }
       ],
@@ -773,7 +773,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_cost_usage_USD_total[$__range])) / sum(sum_over_time(claude_code_token_usage_tokens_total{type=\"output\"}[$__range])) * 1000",
+          "expr": "sum(increase(claude_code_cost_usage_USD_total[$__range])) / sum(increase(claude_code_token_usage_tokens_total{type=\"output\"}[$__range])) * 1000",
           "refId": "A"
         }
       ],
@@ -846,7 +846,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(claude_code_active_time_seconds_total{type=\"cli\"}[$__range])) / sum(sum_over_time(claude_code_active_time_seconds_total{type=\"user\"}[$__range]))",
+          "expr": "sum(increase(claude_code_active_time_seconds_total{type=\"cli\"}[$__range])) / sum(increase(claude_code_active_time_seconds_total{type=\"user\"}[$__range]))",
           "refId": "A"
         }
       ],
@@ -975,7 +975,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (type)(sum_over_time(claude_code_token_usage_tokens_total[$__range]))",
+          "expr": "sum by (type)(increase(claude_code_token_usage_tokens_total[$__range]))",
           "legendFormat": "{{type}}",
           "refId": "A"
         }
@@ -1042,7 +1042,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (model)(sum_over_time(claude_code_token_usage_tokens_total[$__range]))",
+          "expr": "sum by (model)(increase(claude_code_token_usage_tokens_total[$__range]))",
           "legendFormat": "{{model}}",
           "refId": "A"
         }
@@ -1110,7 +1110,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (type)(sum_over_time(claude_code_active_time_seconds_total[$__range]))",
+          "expr": "sum by (type)(increase(claude_code_active_time_seconds_total[$__range]))",
           "legendFormat": "{{type}}",
           "refId": "A"
         }
@@ -1184,7 +1184,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (model)(sum_over_time(claude_code_cost_usage_USD_total[$__range]))",
+          "expr": "sum by (model)(increase(claude_code_cost_usage_USD_total[$__range]))",
           "legendFormat": "{{model}}",
           "refId": "A"
         }
@@ -1651,7 +1651,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (decision)(sum_over_time(claude_code_code_edit_tool_decision_total[$__range]))",
+          "expr": "sum by (decision)(increase(claude_code_code_edit_tool_decision_total[$__range]))",
           "legendFormat": "{{decision}}",
           "refId": "A"
         }
