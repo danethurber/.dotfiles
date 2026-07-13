@@ -84,5 +84,18 @@
   // ----- Misc -----
   "telemetry.telemetryLevel": "off",
   "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+
+  // ----- Tabs & UI (Cursor-style) -----
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.enablePreview": false,
+  "breadcrumbs.enabled": false,
+  "workbench.activityBar.orientation": "horizontal",
+  "workbench.activityBar.location": "top",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.lineNumbers": "on",
+  "window.customTitleBarVisibility": "windowed"
 }
