@@ -40,6 +40,7 @@ ln -sfn "$DOTFILES/ccstatusline/settings.json" ~/.config/ccstatusline/settings.j
 ln -sfn "$DOTFILES/.gitconfig"            ~/.gitconfig.local
 ln -sfn "$DOTFILES/.editorconfig"         ~/.editorconfig
 ln -sfn "$DOTFILES/claude/CLAUDE.md"      ~/.claude/CLAUDE.md
+ln -sfn "$DOTFILES/claude/output-styles"  ~/.claude/output-styles
 # claude/settings.json is gitignored (it absorbs Claude Code's runtime writes), so it
 # won't exist on a fresh clone. Seed it from the committed template before symlinking.
 [ -f "$DOTFILES/claude/settings.json" ] || cp "$DOTFILES/claude/settings.example.json" "$DOTFILES/claude/settings.json"

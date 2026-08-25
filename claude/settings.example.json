@@ -60,5 +60,6 @@
     "commit-commands@claude-code-plugins": true,
     "feature-dev@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "outputStyle": "Unslop"
 }

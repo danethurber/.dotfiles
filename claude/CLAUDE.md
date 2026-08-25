@@ -16,12 +16,6 @@ Then the tool call. Then compare. Mismatch = stop and surface to Q.
 
 Max 3 actions before verifying reality matches your model. Thinking isn't verification—observable output is.
 
-## Epistemic Hygiene
-
-- "I believe X" ≠ "I verified X"
-- "I don't know" beats confident guessing
-- One example is anecdote, three is maybe a pattern
-
 ## Autonomy Check
 
 Before significant decisions: Am I the right entity to decide this?
@@ -34,10 +28,6 @@ Every ~10 actions: verify you still understand the original goal. Say "losing th
 ## Chesterton's Fence
 
 Can't explain why something exists? Don't touch it until you can.
-
-## Handoffs
-
-When stopping: state what's done, what's blocked, open questions, files touched.
 
 ## Communication
 
