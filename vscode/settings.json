@@ -25,9 +25,14 @@
   "workbench.colorTheme": "Nord",
   "workbench.iconTheme": "vs-seti",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.mouseWheelScrollSensitivity": 3,
+
+  // ----- Vim (vscodevim) -----
+  "vim.useSystemClipboard": true,
 
   // ----- EditorConfig (respects repo .editorconfig) -----
   "editor.detectIndentation": true,
+  "editor.colorDecorators": false,
 
   // ----- Git -----
   "git.autofetch": true,
@@ -89,8 +94,9 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "editor.minimap.enabled": false,
+  "chat.titleBar.openInAgentsWindow.enabled": false,
 
-  // ----- Tabs & UI (Cursor-style) -----
+  // ----- Tabs & UI -----
   "workbench.editor.showTabs": "multiple",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.enablePreview": false,
@@ -98,7 +104,7 @@
   "workbench.activityBar.orientation": "horizontal",
   "workbench.activityBar.location": "top",
   "editor.cursorBlinking": "expand",
-  "editor.cursorSmoothCaretAnimation": "on",
   "editor.lineNumbers": "on",
-  "window.customTitleBarVisibility": "windowed"
+  "window.customTitleBarVisibility": "windowed",
+  "chat.titleBar.signIn.enabled": false
 }
