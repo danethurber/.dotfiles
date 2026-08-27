@@ -8,6 +8,7 @@
 node = "lts"
 go = "latest"
 python = "3.13"
+java = "temurin-11"
 
 [settings]
 # Honor idiomatic version files (.nvmrc, .python-version) for these tools.
