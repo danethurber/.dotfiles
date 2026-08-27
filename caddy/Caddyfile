@@ -3,6 +3,6 @@
 # 127.0.0.1 — no /etc/hosts edits needed. Port 8080 (not 80) so `brew services
 # start caddy` never needs root. Add one block per local service.
 
-http://ccdash.lvh.me:8080 {
+http://localdash.lvh.me:8080 {
 	reverse_proxy localhost:43000
 }
