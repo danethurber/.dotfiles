@@ -8,10 +8,21 @@
   // Toggle integrated terminal with the same chord as most setups
   { "key": "ctrl+`", "command": "workbench.action.terminal.toggleTerminal" },
 
+  // Vim-style panel navigation (editor groups, sidebar, terminal) — guarded
+  // off when the terminal has focus since ctrl+h/j/k/l are backspace/
+  // linefeed/kill-line/clear-screen control codes there.
+  { "key": "ctrl+h", "command": "workbench.action.navigateLeft", "when": "!terminalFocus" },
+  { "key": "ctrl+l", "command": "workbench.action.navigateRight", "when": "!terminalFocus" },
+  { "key": "ctrl+k", "command": "workbench.action.navigateUp", "when": "!terminalFocus" },
+  { "key": "ctrl+j", "command": "workbench.action.navigateDown", "when": "!terminalFocus" },
+
   // Move lines (Option+Up/Down) — explicit for consistency
   { "key": "alt+up", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && !editorReadonly" },
   { "key": "alt+down", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && !editorReadonly" },
 
   // Format document
-  { "key": "cmd+shift+i", "command": "editor.action.formatDocument", "when": "editorHasDocumentFormattingProvider && editorTextFocus" }
+  { "key": "cmd+shift+i", "command": "editor.action.formatDocument", "when": "editorHasDocumentFormattingProvider && editorTextFocus" },
+
+  // Claude Code: soft newline in the integrated terminal (installed by `/terminal-setup`)
+  { "key": "shift+enter", "command": "workbench.action.terminal.sendSequence", "args": { "text": "\u001b\r" }, "when": "terminalFocus" }
 ]
