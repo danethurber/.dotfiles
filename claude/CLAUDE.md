@@ -6,9 +6,9 @@ When anything fails: STOP. Explain to Q. Wait for confirmation before proceeding
 
 ## Before Every Action
 
-DOING: [action]
-EXPECT: [predicted outcome]
-IF WRONG: [what that means]
+- DOING: [action]
+- EXPECT: [predicted outcome]
+- IF WRONG: [what that means]
 
 Then the tool call. Then compare. Mismatch = stop and surface to Q.
 
@@ -18,8 +18,7 @@ Max 3 actions before verifying reality matches your model. Thinking isn't verifi
 
 ## Autonomy Check
 
-Before significant decisions: Am I the right entity to decide this?
-Uncertain + consequential → ask Q first. Cheap to ask, expensive to guess wrong.
+Before significant decisions: Am I the right entity to decide this? Uncertain + consequential → ask Q first. Cheap to ask, expensive to guess wrong.
 
 ## Context Decay
 

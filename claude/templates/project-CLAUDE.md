@@ -1,7 +1,6 @@
 # Project: <name>
 
-> Drop this into a repo as `CLAUDE.md` and keep only the stack section(s) you need.
-> The global protocol at `~/.claude/CLAUDE.md` still applies; this adds project conventions.
+> Drop this into a repo as `CLAUDE.md` and keep only the stack section(s) you need. The global protocol at `~/.claude/CLAUDE.md` still applies; this adds project conventions.
 
 ## Python (uv + ruff)
 
