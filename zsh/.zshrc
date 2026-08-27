@@ -7,8 +7,13 @@ bindkey -e
 unset GIT_EDITOR  # Prevent Cursor's remote-containers extension from overriding
 export VIRTUAL_ENV_DISABLE_PROMPT=1  # Let starship handle venv display
 export PNPM_HOME="$HOME/Library/pnpm"
+export AWS_PAGER=''                  # AWS CLI v2 pipes everything through `less`
 
 # PATH
+# typeset -U keeps entries unique, first occurrence winning. Without it this
+# unguarded prepend accumulates duplicates every time a nested shell re-sources
+# this file — which is why $PATH used to list .local/bin twice.
+typeset -U path PATH
 export PATH="./node_modules/.bin:$HOME/.local/bin:$HOME/.npm-global/bin:/opt/homebrew/opt/libpq/bin:$PNPM_HOME:$PATH"
 
 # Clear stale VIRTUAL_ENV inherited from a parent process (e.g. an editor
