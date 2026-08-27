@@ -54,7 +54,10 @@
   "eslint.useFlatConfig": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    // sortImports (not organizeImports) sorts on save without deleting unused
+    // imports — the two used to be inseparable, split via TS's own fix for
+    // https://github.com/microsoft/TypeScript/issues/43141.
+    "source.sortImports": "explicit"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
