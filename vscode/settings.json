@@ -62,7 +62,7 @@
     // sortImports (not organizeImports) sorts on save without deleting unused
     // imports — the two used to be inseparable, split via TS's own fix for
     // https://github.com/microsoft/TypeScript/issues/43141.
-    "source.sortImports": "explicit"
+    "source.sortImports": "explicit",
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
@@ -83,7 +83,7 @@
   "go.lintOnSave": "package",
   "gopls": {
     "ui.semanticTokens": true,
-    "formatting.gofumpt": true
+    "formatting.gofumpt": true,
   },
 
   // ----- TOML -----
@@ -106,5 +106,7 @@
   "editor.cursorBlinking": "expand",
   "editor.lineNumbers": "on",
   "window.customTitleBarVisibility": "windowed",
-  "chat.titleBar.signIn.enabled": false
+  "chat.titleBar.signIn.enabled": false,
+  "claudeCode.preferredLocation": "panel",
+  "git.detectWorktrees": true,
 }

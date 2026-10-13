@@ -14,16 +14,16 @@ git clone git@github.com:danethurber/.dotfiles.git ~/.dotfiles
 
 ## What's Included
 
-| Component | Description |
-|-----------|-------------|
-| **Ghostty** | GPU terminal, Nord theme, Hack Nerd Font (daily driver) |
-| **Zsh + Antidote** | Fast shell with static plugin bundle (aws, git, docker, completions) |
-| **Starship** | Two-line prompt (git, node, python, docker, aws) |
-| **LazyVim** | Neovim with LSP/format/lint for Python, Go, TS/Vue/React, JSON, TOML, Markdown |
-| **VSCode** | Settings, keybindings, and extension list tracked in-repo |
-| **Version mgmt** | `mise` (Node, Go, Python interpreters) · `uv` (Python venvs) |
-| **Git** | Rich aliases, delta diffs, SSH commit signing via 1Password |
-| **Claude Code** | Global CLAUDE.md protocol, plugins, ccstatusline, per-stack project templates |
+| Component          | Description                                                                    |
+| ------------------ | ------------------------------------------------------------------------------ |
+| **Ghostty**        | GPU terminal, Nord theme, Hack Nerd Font (daily driver)                        |
+| **Zsh + Antidote** | Fast shell with static plugin bundle (aws, git, docker, completions)           |
+| **Starship**       | Two-line prompt (git, node, python, docker, aws)                               |
+| **LazyVim**        | Neovim with LSP/format/lint for Python, Go, TS/Vue/React, JSON, TOML, Markdown |
+| **VSCode**         | Settings, keybindings, and extension list tracked in-repo                      |
+| **Version mgmt**   | `mise` (Node, Go, Python interpreters) · `uv` (Python venvs)                   |
+| **Git**            | Rich aliases, delta diffs, SSH commit signing via 1Password                    |
+| **Claude Code**    | Global CLAUDE.md protocol, plugins, ccstatusline, per-stack project templates  |
 
 ## Version management
 
@@ -54,7 +54,7 @@ Two tools, clear division of labor:
 
 ## Secrets
 
-Create `~/.env` for secrets (not committed); sourced by `.zshrc`:
+Create `~/.env` in your **home folder** (not in this repo) for secrets; sourced by `.zshrc`. Start each line with `export`, or programs will not see the variable:
 
 ```bash
 export SOME_API_TOKEN="xxx"
@@ -69,6 +69,7 @@ export SOME_API_TOKEN="xxx"
 ## Neovim plugins
 
 Custom plugins in `nvim/lua/plugins/`:
+
 - **claude.lua** — Claude Code integration
 - **python.lua** — Python LSP/DAP, uv commands, venv management
 - **formatting.lua** — conform.nvim overrides (ruff for Python, taplo for TOML); Go (gofumpt) and web filetypes (prettier) come from LazyVim extras

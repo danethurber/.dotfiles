@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "lines": [
     [
       {
@@ -66,7 +66,7 @@
         "color": "hex:B48EAD",
         "metadata": {
           "mode": "current",
-          "hideWhenEmpty": "true"
+          "hide": "empty"
         }
       },
       {

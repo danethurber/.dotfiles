@@ -32,6 +32,19 @@ Can't explain why something exists? Don't touch it until you can.
 
 When confused: stop, think, present theories, get signoff. Never silently retry failures.
 
+## Code Comments
+
+- Add no comments to code, in any repo. This overrides "match the surrounding comment density".
+- Exceptions: a short JSDoc on an exported or public function, and comments that tooling requires or generates, such as the import-group labels a lint rule enforces.
+- Never keep or reword an existing comment in a block you rewrite. Delete it unless I ask to keep it.
+- Before every commit, check the diff for added `//`, `/*` or `<!--` lines and remove them, except the exceptions above.
+
+## Drafts
+
+- Never add line breaks inside a paragraph or a bullet in a draft. One line per paragraph and per bullet.
+- A draft is any text I paste somewhere else: Jira tickets, PR descriptions, Notion, Slack, and every note in `.scratch/`.
+- This overrides `max_line_length`, Prettier `printWidth`, and the wrap of nearby text. Commit messages still wrap at 72.
+
 ## Git Commits
 
 Never add Claude attribution, emoji, or "Generated with Claude" footers to commits. Just write a clean commit message.

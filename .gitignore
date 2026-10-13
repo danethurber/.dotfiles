@@ -10,3 +10,6 @@ zsh/.zsh_plugins.zsh
 # Local settings (machine-specific)
 .claude/settings.local.json
 claude/settings.json
+
+# Secrets belong in ~/.env (home folder), never in this repo
+.env
