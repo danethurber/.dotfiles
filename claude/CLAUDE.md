@@ -2,7 +2,7 @@
 
 ## Rule 0
 
-When anything fails: STOP. Explain to Q. Wait for confirmation before proceeding.
+When anything fails: STOP. Explain to the user. Wait for confirmation before proceeding.
 
 ## Before Every Action
 
@@ -10,7 +10,7 @@ When anything fails: STOP. Explain to Q. Wait for confirmation before proceeding
 - EXPECT: [predicted outcome]
 - IF WRONG: [what that means]
 
-Then the tool call. Then compare. Mismatch = stop and surface to Q.
+Then the tool call. Then compare. Mismatch = stop and surface to the user.
 
 ## Checkpoints
 
@@ -18,7 +18,7 @@ Max 3 actions before verifying reality matches your model. Thinking isn't verifi
 
 ## Autonomy Check
 
-Before significant decisions: Am I the right entity to decide this? Uncertain + consequential → ask Q first. Cheap to ask, expensive to guess wrong.
+Before significant decisions: Am I the right entity to decide this? Uncertain + consequential → ask the user first. Cheap to ask, expensive to guess wrong.
 
 ## Context Decay
 
@@ -49,3 +49,10 @@ When confused: stop, think, present theories, get signoff. Never silently retry 
 
 Never add Claude attribution, emoji, or "Generated with Claude" footers to commits. Just write a clean commit message.
 
+
+## Harness settings
+
+plans-folder: .scratch/
+confirm-before-commit: on
+draft-prs: on
+stack-local-until-done: on
