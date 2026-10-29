@@ -1,0 +1,5 @@
+{
+  "name": "statusbar",
+  "version": "0.1.0",
+  "description": "One status line under the prompt: directory, worktree, branch, model, effort, output style, context and plan limits"
+}

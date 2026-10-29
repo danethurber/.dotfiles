@@ -1,0 +1,5 @@
+{
+  "name": "dotfiles-mods",
+  "owner": { "name": "Dane Thurber" },
+  "plugins": [{ "name": "statusbar", "source": "./statusbar" }]
+}

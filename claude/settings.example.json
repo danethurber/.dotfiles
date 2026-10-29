@@ -57,7 +57,16 @@
     "security-guidance@claude-code-plugins": true,
     "code-review@claude-code-plugins": true,
     "commit-commands@claude-code-plugins": true,
-    "feature-dev@claude-code-plugins": true
+    "feature-dev@claude-code-plugins": true,
+    "statusbar@dotfiles-mods": true
+  },
+  "extraKnownMarketplaces": {
+    "dotfiles-mods": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/dane/.dotfiles/claude/mods"
+      }
+    }
   },
   "alwaysThinkingEnabled": true,
   "outputStyle": "Unslop"
