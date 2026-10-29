@@ -58,13 +58,28 @@
     "code-review@claude-code-plugins": true,
     "commit-commands@claude-code-plugins": true,
     "feature-dev@claude-code-plugins": true,
-    "statusbar@dotfiles-mods": true
+    "statusbar@dotfiles-mods": true,
+    "flightdeck@claude-flightdeck": true
   },
   "extraKnownMarketplaces": {
     "dotfiles-mods": {
       "source": {
         "source": "directory",
         "path": "/Users/dane/.dotfiles/claude/mods"
+      }
+    },
+    "claude-flightdeck": {
+      "source": {
+        "source": "github",
+        "repo": "scasella/claude-flightdeck"
+      }
+    }
+  },
+  "pluginConfigs": {
+    "flightdeck@claude-flightdeck": {
+      "options": {
+        "statusLine": false,
+        "openOnStart": false
       }
     }
   },
